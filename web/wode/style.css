@@ -1,0 +1,23 @@
+#header {
+    width: 90%;
+    height: 50px;
+    border: 1px solid red;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#header a {
+    display: inline-block;
+    width: auto;
+    height: 30px;
+    border: 1px solid blue;
+    margin: 8px 5%;
+}
+
+#main {
+    width: 90%;
+    height:auto;
+    border: 1px solid red;
+    margin: 0 auto;
+}

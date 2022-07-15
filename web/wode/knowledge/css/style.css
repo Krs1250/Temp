@@ -1,0 +1,109 @@
+i {
+    font-size:14px;
+    font-style:normal;
+    font-weight: 400;
+    color: gray;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+}
+
+code {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+pre {
+    width: 90%;
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: gray;
+    font-weight: 800;
+}
+
+a:hover {
+    color: blueviolet;
+}
+
+.classification {
+    border-bottom: 3px solid slategrey;
+}
+
+#main {
+    width: 60%;
+    height:auto;
+    border: 1px solid grey;
+    margin-left: 10%;
+    margin-bottom: 2em;
+    padding:0 1em; 
+}
+
+#main pre {
+    color: beige;
+    display: inline-block;
+    background-color: grey;
+    border-radius: 5px;
+    margin-top: 0;
+}
+
+#main table tr th {
+    text-align: center;
+    border: 1px solid grey;
+}
+
+#main table tr td {
+    border-bottom: 1px dashed grey;
+}
+
+#main #b pre {
+    display: inline-block;
+    line-height: 6px;
+    width: auto;
+    margin: 2px 0;
+
+}
+
+#nav {
+    position: fixed;
+    width: 20%;
+    border: 1px solid grey;
+    right: 0;
+    margin-right: 2.5%;
+    padding-left: 1em;
+}
+
+#nav ul {
+    font-size: 12pt;
+    list-style-type: none;
+    text-indent: -2em;
+    
+}
+
+#nav ul li {
+    text-indent: -1.5em;
+}
+
+#nav ul li ul li {
+    font-size: small;
+    text-indent: -3em;
+}
+
+#footer p a {
+    color: sandybrown;
+    text-decoration: underline;
+}
+
+#footer p a:hover {
+    color: blue;
+    text-decoration: none;
+}
+
+#footer #foot {
+    display: inline-block;
+    position: absolute;
+    right: 10%;
+}

@@ -1,0 +1,45 @@
+a {
+    text-decoration: none;
+    color: gray;
+    font-weight: 800;
+}
+
+a:hover {
+    color: blueviolet;
+}
+
+#main {
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    margin-bottom: 2em;
+}
+
+
+#main #fight #forright input {
+    width: 15%;
+    text-align: center;
+}
+#main #fight #copy {
+    margin-top: 1em;
+    display: none;
+}
+#main #fight #copy input {
+    width: 12em;
+}
+
+#main > div {
+    border: 1px solid grey;
+    padding: 0 3em;
+    padding-bottom: 1.5em;
+}
+
+#main #url a {
+    display: block;
+}
+
+#footer a {
+    display: inline-block;
+    position: absolute;
+    right: 10%;
+}

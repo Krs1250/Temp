@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+    </script>
+</head>
+<body>
+    <input type="text" id="text" value="123"/></br>
+    <button type="button" id="copy"><b>copy</b></button></br>
+    <button type="button" id="pre">&lt;pre&gt;</button>
+    <button type="button" id="b">&lt;b&gt;</button>
+    <button type="button" id="a">&lt;a&gt;</button>
+    <button type="button" id="z">&lt; &gt;</button>
+    <script type="text/javascript">
+
+        copy.addEventListener('click',() => {
+            text.select()
+            document.execCommand('copy')
+        })
+
+        $(document).ready(
+            $("#pre").click(function(){
+                $("#text").replaceSelectedText("123", "</b>");
+            })
+        )
+    </script>
+</body>
+</html>

@@ -1,0 +1,1830 @@
+<div class="page-scroller ps ps--theme_default ps--active-y" data-ps-id="7a738788-67ef-443c-1f4c-6983ca03cd2b">
+          <!-- ko if: $root.loadFailed() --><!-- /ko -->
+          <!-- ko ifnot: $root.loadFailed() -->
+          <!-- ko if: $root.currentPage() -->
+          <!-- ko if: !$root.isAuditionMode() && $root.currentPage().isHide() --><!-- /ko -->
+          <!-- ko if: $root.isAuditionMode() && !$root.currentPage().isAudition() --><!-- /ko -->
+          <!-- ko ifnot: (!$root.isAuditionMode() && $root.currentPage().isHide()) || ($root.isAuditionMode() && !$root.currentPage().isAudition()) -->
+          <!-- ko if: $root.currentPage().isLoaded() -->
+          <div class="page-content" id="MathDiv" data-bind="component: {
+                  name: &quot;page-component&quot;,
+                  params: { page: $root.currentPage() }
+                }"><div class="page-wrapper text-default one-question" data-bind="css: { 'app-mode': appMode, 'one-question': onlyOneQuestion }">
+  <!-- ko foreach: { data: page.pageElements(), as: 'pageElement' } -->
+  <div class="page-element" data-bind="attr: { 'id': 'pageElement' + pageElement.id() }" id="pageElement3778567">
+    <!-- ko ifnot: pageElement.type() == 4 || pageElement.type() == 6 || pageElement.type() == 10 || pageElement.type() == 13 || pageElement.type() == 14 || pageElement.type() == 15 || pageElement.type() == 16 || pageElement.type() == 17 --><!-- /ko -->
+    <!-- ko if: pageElement.type() == 4 --><!-- /ko -->
+    <!-- ko if: pageElement.type() == 14 || pageElement.type() == 15 --><!-- /ko -->
+    <!-- ko if: pageElement.type() == 6 -->
+    <!-- 处理练习 -->
+    <div data-bind="component: {
+        name: &quot;question-view-component&quot;,
+        params: {
+          pageElement: pageElement
+        }
+    }"><div class="question-view" data-bind="css: { 'hide-analysis': !$root.isAuthorPreview() &amp;&amp; questionLimitChance() &amp;&amp; questionLimitChance() - pageElement.usedSubmitChance() > 0 }">
+  <!-- ko if: leftTime() --><!-- /ko -->
+  <div class="question-setting-panel">
+    <span class="panel-title"><i class="iconfont"></i><span data-bind="text: $root.i18nMessageText().exercise">练习</span></span>
+    <div class="question-setting-list">
+      <div class="question-setting-item">
+        <div>
+          <span class="text"><span data-bind="i18n: $root.i18nMessageText().totalQuestions, places: { n: pageElement.questions().length }">共10题</span></span>
+        </div>
+      </div>
+      <!-- ko if: questionLimitChance() || (!questionLimitChance() && !$component.questionManyChance) -->
+      <div class="question-setting-item">
+        <!-- ko if: questionLimitChance() --><!-- /ko -->
+        <!-- ko ifnot: questionLimitChance() -->
+        <!-- ko ifnot: $component.questionManyChance -->
+        <div><span class="text" data-bind="text: $root.i18nMessageText().oneChance">限答1次</span></div>
+        <!-- /ko -->
+        <!-- /ko -->
+      </div>
+      <!-- /ko -->
+      <!-- ko if: $component.pageElement.isQuestionComplete() -->
+      <div class="question-setting-item">
+        <div>
+          <!-- {n}分 -->
+          <span class="text"><span data-bind="i18n: $root.i18nMsgText().points, places: { n: questionUserTotalScore() }">100分</span></span>
+        </div>
+      </div>
+      <!-- /ko -->
+    </div>
+  </div>
+  <div class="question-element-node-list">
+    <!-- ko 'foreach': { data: pageElement.questions, as: 'question' } -->
+    <div class="question-element-node" data-bind="component: {
+        name: &quot;question-element-component&quot;,
+        params: {
+          question: question,
+          questionViewModel: $parent,
+          questionManyChance: $component.questionManyChance,
+          questionShowAnswer: $root.questionShowAnswer
+        }
+      }"><div class="question-wrapper finished show-answer right" data-bind="attr: { 'id': 'question' + question.id() },
+  css: {
+    'finished': question.status(),
+    'show-answer': question.questionShowAnswer,
+    'right': question.isCorrect(),
+    'wrong': !question.isCorrect(),
+    'sub-question': question.parentQuestion,
+    'split-screen-mode': isSplitScreen() &amp;&amp; !mobileMode,
+    'mobile-split-screen-mode': isSplitScreen() &amp;&amp; mobileMode
+  }" id="question10009096">
+  <div class="split-screen-wrapper">
+    <!-- ko if: question.type() == 24 --><!-- /ko -->
+    <div class="question-title-wrapper" data-bind="css: { 'parent-question': question.type() == 24 }">
+      <div class="question-title-scroller">
+        <div class="question-title-text not-IE" data-bind="css: { 'not-IE': !isIE() }">
+          <span class="question-sort" data-bind="text: (question.sort())">1</span><span class="question-sort-dot">.</span>
+          <span class="question-type-tag" data-bind="text: $root.i18nMessageText()[questionType[question.type()]]">判断题</span>
+          <!-- ko if: question.type() == 17 --><!-- /ko -->
+          <!-- ko if: isTitleFile(question) --><!-- /ko -->
+          <span data-bind="attr: { 'class': 'question-title-html question-type-' + question.type() }, html: question.title()" class="question-title-html question-type-4">坚持党对一切工作的主导，党政军民学，东西南北中，党是主导一切的。</span>
+        </div>
+        <!-- ko ifnot: isTitleFile(question) -->
+        <!-- ko foreach: { data: questionFiles, as: 'questionFile' } --><!-- /ko -->
+        <!-- /ko -->
+        <div class="custom-select" data-bind="if: activeSelect().choices"></div>
+      </div>
+      <div class="resize-handler" data-bind="event: { touchstart: stopDefaultEvent, touchend: stopDefaultEvent, touchmove: stopDefaultEvent }, touchstartBubble: false, touchendBubble: false, touchmoveBubble: false">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="question-body-wrapper">
+      <!-- ko if: question.type() == 1 || question.type() == 2 --><!-- /ko -->
+      <!-- ko if: question.type() == 4 -->
+      <div class="checking-type">
+        <div class="choice-btn right-btn" role="button" href="javascript:;" data-bind="attr: { 'aria-label': (question.answer() === true ? ' 已选中' : '')+'正确' }, click: clickCheckingBtn.bind($data, true), css: { selected: question.answer() === true}" aria-label="正确">
+          <i class="iconfont"></i>
+          <div class="result">
+            <i class="iconfont right"></i>
+            <i class="iconfont wrong"></i>
+          </div>
+        </div>
+        <div class="choice-btn wrong-btn selected" href="javascript:;" role="button" data-bind="attr: { 'aria-label': (question.answer() === false ? ' 已选中' : '')+'错误' },click: clickCheckingBtn.bind($data, false), css: { selected: question.answer() === false}" aria-label=" 已选中错误">
+          <i class="iconfont"></i>
+          <div class="result">
+            <i class="iconfont right"></i>
+            <i class="iconfont wrong"></i>
+          </div>
+        </div>
+      </div>
+      <!-- /ko -->
+      <!-- ko if: question.type() == 5 --><!-- /ko -->
+      <!-- ko if: question.type() == 12 --><!-- /ko -->
+      <!-- ko if: question.type() == 24 --><!-- /ko -->
+    </div>
+    <div class="split-screen-resize-handler" data-bind="event: { touchstart: stopDefaultEvent, touchend: stopDefaultEvent, touchmove: stopDefaultEvent }, touchstartBubble: false, touchendBubble: false, touchmoveBubble: false">
+      <div class="line"></div>
+    </div>
+  </div>
+  <div class="question-operation-wrapper" data-bind="">
+    <!-- ko ifnot: question.status() --><!-- /ko -->
+    <!-- ko if: question.status() && question.questionManyChance --><!-- /ko -->
+  </div>
+  <!-- ko if: question.type() != 24 || (question.type() == 24 && question.correctReply) -->
+  <div class="question-analysis-wrapper show" data-bind="css: { show: question.showAnalysis() &amp;&amp; ( question.questionShowAnswer || (!question.questionShowAnswer &amp;&amp; question.correctReply()) ) }">
+    <!-- ko if: question.type() != 24 -->
+    <div class="answer-result-tip">
+      <div class="tip-icon">
+        <!-- ko if: question.isCorrect() -->
+        <!-- ko if: question.type() != 5 -->
+        <i class="iconfont correct"></i>
+        <!-- /ko -->
+        <!-- ko if: question.type() == 5 --><!-- /ko -->
+        <!-- /ko -->
+        <!-- ko if: question.questionManyChance && !question.isCorrect() --><!-- /ko -->
+        <!-- ko if: !question.questionManyChance && !question.isCorrect() --><!-- /ko -->
+      </div>
+      <div class="tip-text">
+        <div class="message" data-bind="text:
+          question.answerTipType() == 1 &amp;&amp; question.type() != 5 ? $root.i18nMessageText().answerRight :
+          question.answerTipType() == 1 &amp;&amp; question.type() == 5 ? $root.i18nMessageText().answered :
+          question.answerTipType() == 2 ? $root.i18nMessageText().oneChanceWrong :
+          question.answerTipType() == 3 ? $root.i18nMessageText().oneChancePartialWrong :
+          question.answerTipType() == 4 ? $root.i18nMessageText().manyChanceWrong :
+          question.answerTipType() == 5 ? $root.i18nMessageText().manyChancePartialWrong : ''">回答正确！</div>
+      </div>
+    </div>
+    <div class="circle-line"></div>
+    <!-- /ko -->
+    <div class="answer-result-text">
+      <!-- ko if: question.type() != 24 && question.questionShowAnswer -->
+      <div class="correct-answer-area">
+        <span data-bind="text: $root.i18nMessageText().correctAnswer">正确答案：</span>
+        <span data-bind="html: question.type() == 4 ? (question.correctAnswer() == true ? $root.i18nMessageText().right : $root.i18nMessageText().wrong) : (question.type() == 3 ? $component.arrayToString(question.correctAnswer()) : question.correctAnswer())">错误</span>
+      </div>
+      <!-- ko if: question.type() != 24 && question.status() -->
+      <div class="user-answer-area">
+        <span data-bind="text: $root.i18nMessageText().yourAnswer">你的答案：</span>
+        <span data-bind="html: question.answer() &amp;&amp; question.answer().length == 0 ? $root.i18nMessageText().unanswered : (question.type() == 4 ? (question.answer() == true ? $root.i18nMessageText().right : $root.i18nMessageText().wrong) : (question.type() == 3 ? $component.arrayToString(question.answer()) : question.answer()))">错误</span>
+      </div>
+      <!-- /ko -->
+      <!-- /ko -->
+      <!-- ko if: question.correctReply && question.type() != 11 && question.type() != 17 && question.type() != 23 -->
+      <div>
+        <span data-bind="text: $root.i18nMessageText().explanation">答案解析：</span>
+        <span data-bind="html: question.correctReply"></span>
+      </div>
+      <!-- /ko -->
+      <!-- ko if: question.type() == 11 || question.type() == 17 || question.type() == 23 --><!-- /ko -->
+    </div>
+  </div>
+  <!-- /ko -->
+</div></div>
+    
+    <div class="question-element-node" data-bind="component: {
+        name: &quot;question-element-component&quot;,
+        params: {
+          question: question,
+          questionViewModel: $parent,
+          questionManyChance: $component.questionManyChance,
+          questionShowAnswer: $root.questionShowAnswer
+        }
+      }"><div class="question-wrapper finished show-answer right" data-bind="attr: { 'id': 'question' + question.id() },
+  css: {
+    'finished': question.status(),
+    'show-answer': question.questionShowAnswer,
+    'right': question.isCorrect(),
+    'wrong': !question.isCorrect(),
+    'sub-question': question.parentQuestion,
+    'split-screen-mode': isSplitScreen() &amp;&amp; !mobileMode,
+    'mobile-split-screen-mode': isSplitScreen() &amp;&amp; mobileMode
+  }" id="question10009097">
+  <div class="split-screen-wrapper">
+    <!-- ko if: question.type() == 24 --><!-- /ko -->
+    <div class="question-title-wrapper" data-bind="css: { 'parent-question': question.type() == 24 }">
+      <div class="question-title-scroller">
+        <div class="question-title-text not-IE" data-bind="css: { 'not-IE': !isIE() }">
+          <span class="question-sort" data-bind="text: (question.sort())">2</span><span class="question-sort-dot">.</span>
+          <span class="question-type-tag" data-bind="text: $root.i18nMessageText()[questionType[question.type()]]">填空题</span>
+          <!-- ko if: question.type() == 17 --><!-- /ko -->
+          <!-- ko if: isTitleFile(question) -->
+          <!-- ko foreach: { data: questionFiles, as: 'questionFile' } --><!-- /ko -->
+          <!-- /ko -->
+          <span data-bind="attr: { 'class': 'question-title-html question-type-' + question.type() }, html: question.title()" class="question-title-html question-type-3">要坚持<span class="input-wrapper right"><input type="text" class="blank-input" disabled="disabled"><span class="answer-width">马克思主义</span><div class="result right"><i class="iconfont right"></i></div></span>在意识形态领域的指导地位，坚持以社会主义核心价值观引领文化建设。&nbsp;</span>
+        </div>
+        <!-- ko ifnot: isTitleFile(question) --><!-- /ko -->
+        <div class="custom-select" data-bind="if: activeSelect().choices"></div>
+      </div>
+      <div class="resize-handler" data-bind="event: { touchstart: stopDefaultEvent, touchend: stopDefaultEvent, touchmove: stopDefaultEvent }, touchstartBubble: false, touchendBubble: false, touchmoveBubble: false">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="question-body-wrapper">
+      <!-- ko if: question.type() == 1 || question.type() == 2 --><!-- /ko -->
+      <!-- ko if: question.type() == 4 --><!-- /ko -->
+      <!-- ko if: question.type() == 5 --><!-- /ko -->
+      <!-- ko if: question.type() == 12 --><!-- /ko -->
+      <!-- ko if: question.type() == 24 --><!-- /ko -->
+    </div>
+    <div class="split-screen-resize-handler" data-bind="event: { touchstart: stopDefaultEvent, touchend: stopDefaultEvent, touchmove: stopDefaultEvent }, touchstartBubble: false, touchendBubble: false, touchmoveBubble: false">
+      <div class="line"></div>
+    </div>
+  </div>
+  <div class="question-operation-wrapper" data-bind="">
+    <!-- ko ifnot: question.status() --><!-- /ko -->
+    <!-- ko if: question.status() && question.questionManyChance --><!-- /ko -->
+  </div>
+  <!-- ko if: question.type() != 24 || (question.type() == 24 && question.correctReply) -->
+  <div class="question-analysis-wrapper show" data-bind="css: { show: question.showAnalysis() &amp;&amp; ( question.questionShowAnswer || (!question.questionShowAnswer &amp;&amp; question.correctReply()) ) }">
+    <!-- ko if: question.type() != 24 -->
+    <div class="answer-result-tip">
+      <div class="tip-icon">
+        <!-- ko if: question.isCorrect() -->
+        <!-- ko if: question.type() != 5 -->
+        <i class="iconfont correct"></i>
+        <!-- /ko -->
+        <!-- ko if: question.type() == 5 --><!-- /ko -->
+        <!-- /ko -->
+        <!-- ko if: question.questionManyChance && !question.isCorrect() --><!-- /ko -->
+        <!-- ko if: !question.questionManyChance && !question.isCorrect() --><!-- /ko -->
+      </div>
+      <div class="tip-text">
+        <div class="message" data-bind="text:
+          question.answerTipType() == 1 &amp;&amp; question.type() != 5 ? $root.i18nMessageText().answerRight :
+          question.answerTipType() == 1 &amp;&amp; question.type() == 5 ? $root.i18nMessageText().answered :
+          question.answerTipType() == 2 ? $root.i18nMessageText().oneChanceWrong :
+          question.answerTipType() == 3 ? $root.i18nMessageText().oneChancePartialWrong :
+          question.answerTipType() == 4 ? $root.i18nMessageText().manyChanceWrong :
+          question.answerTipType() == 5 ? $root.i18nMessageText().manyChancePartialWrong : ''">回答正确！</div>
+      </div>
+    </div>
+    <div class="circle-line"></div>
+    <!-- /ko -->
+    <div class="answer-result-text">
+      <!-- ko if: question.type() != 24 && question.questionShowAnswer -->
+      <div class="correct-answer-area">
+        <span data-bind="text: $root.i18nMessageText().correctAnswer">正确答案：</span>
+        <span data-bind="html: question.type() == 4 ? (question.correctAnswer() == true ? $root.i18nMessageText().right : $root.i18nMessageText().wrong) : (question.type() == 3 ? $component.arrayToString(question.correctAnswer()) : question.correctAnswer())">马克思主义</span>
+      </div>
+      <!-- ko if: question.type() != 24 && question.status() -->
+      <div class="user-answer-area">
+        <span data-bind="text: $root.i18nMessageText().yourAnswer">你的答案：</span>
+        <span data-bind="html: question.answer() &amp;&amp; question.answer().length == 0 ? $root.i18nMessageText().unanswered : (question.type() == 4 ? (question.answer() == true ? $root.i18nMessageText().right : $root.i18nMessageText().wrong) : (question.type() == 3 ? $component.arrayToString(question.answer()) : question.answer()))">马克思主义</span>
+      </div>
+      <!-- /ko -->
+      <!-- /ko -->
+      <!-- ko if: question.correctReply && question.type() != 11 && question.type() != 17 && question.type() != 23 -->
+      <div>
+        <span data-bind="text: $root.i18nMessageText().explanation">答案解析：</span>
+        <span data-bind="html: question.correctReply"></span>
+      </div>
+      <!-- /ko -->
+      <!-- ko if: question.type() == 11 || question.type() == 17 || question.type() == 23 --><!-- /ko -->
+    </div>
+  </div>
+  <!-- /ko -->
+</div></div>
+    
+    <div class="question-element-node" data-bind="component: {
+        name: &quot;question-element-component&quot;,
+        params: {
+          question: question,
+          questionViewModel: $parent,
+          questionManyChance: $component.questionManyChance,
+          questionShowAnswer: $root.questionShowAnswer
+        }
+      }"><div class="question-wrapper finished show-answer right" data-bind="attr: { 'id': 'question' + question.id() },
+  css: {
+    'finished': question.status(),
+    'show-answer': question.questionShowAnswer,
+    'right': question.isCorrect(),
+    'wrong': !question.isCorrect(),
+    'sub-question': question.parentQuestion,
+    'split-screen-mode': isSplitScreen() &amp;&amp; !mobileMode,
+    'mobile-split-screen-mode': isSplitScreen() &amp;&amp; mobileMode
+  }" id="question10009088">
+  <div class="split-screen-wrapper">
+    <!-- ko if: question.type() == 24 --><!-- /ko -->
+    <div class="question-title-wrapper" data-bind="css: { 'parent-question': question.type() == 24 }">
+      <div class="question-title-scroller">
+        <div class="question-title-text not-IE" data-bind="css: { 'not-IE': !isIE() }">
+          <span class="question-sort" data-bind="text: (question.sort())">3</span><span class="question-sort-dot">.</span>
+          <span class="question-type-tag" data-bind="text: $root.i18nMessageText()[questionType[question.type()]]">单选题</span>
+          <!-- ko if: question.type() == 17 --><!-- /ko -->
+          <!-- ko if: isTitleFile(question) --><!-- /ko -->
+          <span data-bind="attr: { 'class': 'question-title-html question-type-' + question.type() }, html: question.title()" class="question-title-html question-type-1">十三五以来，党中央团结带领全国人民统筹推进()总体布局，协调推进四个全面战略布局，坚持稳中求进工作总基调贯彻新发展理念，推动各项工作的顺利进行。</span>
+        </div>
+        <!-- ko ifnot: isTitleFile(question) -->
+        <!-- ko foreach: { data: questionFiles, as: 'questionFile' } --><!-- /ko -->
+        <!-- /ko -->
+        <div class="custom-select" data-bind="if: activeSelect().choices"></div>
+      </div>
+      <div class="resize-handler" data-bind="event: { touchstart: stopDefaultEvent, touchend: stopDefaultEvent, touchmove: stopDefaultEvent }, touchstartBubble: false, touchendBubble: false, touchmoveBubble: false">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="question-body-wrapper">
+      <!-- ko if: question.type() == 1 || question.type() == 2 -->
+      <div class="choice-type">
+        <div class="choice-list clearfix" data-bind="foreach: { data: question.choices(), as: 'choice' }">
+          <a class="choice-item clearfix" style="color: #444444;" data-bind="attr: { 'id': 'choice' + choice.id()},
+          css: { image: choice.linkType() == 'image'},
+          click: $parent.clickChoice" role="button" href="javascript:;" id="choice23413223">
+            <div class="checkbox radio selected right" data-bind="css: {
+              radio: $parent.question.type() == 1,
+              selected: choice.isSelected(),
+              right: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isCorrect(),
+              wrong: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isSelected() &amp;&amp; !choice.isCorrect()
+            },attr:{'aria-label': (choice.isSelected() === true ? ' 已选中' : '')}" aria-label=" 已选中">
+              <i class="iconfont right"></i>
+              <i class="iconfont wrong"></i>
+            </div>
+           
+            <div class="option" data-bind="text: choice.option() + '.'">A.</div>
+            <div class="content-wrapper">
+              <div class="content">
+                <!-- ko if: choice.title() -->
+                <div class="text" data-bind="html: choice.title()" role="button">五位一体 </div>
+                <!-- /ko -->
+                <!-- ko if: choice.linkType() == "video" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "audio" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "image" --><!-- /ko -->
+              </div>
+            </div>
+          </a>
+        
+          <a class="choice-item clearfix" style="color: #444444;" data-bind="attr: { 'id': 'choice' + choice.id()},
+          css: { image: choice.linkType() == 'image'},
+          click: $parent.clickChoice" role="button" href="javascript:;" id="choice23413224">
+            <div class="checkbox radio" data-bind="css: {
+              radio: $parent.question.type() == 1,
+              selected: choice.isSelected(),
+              right: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isCorrect(),
+              wrong: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isSelected() &amp;&amp; !choice.isCorrect()
+            },attr:{'aria-label': (choice.isSelected() === true ? ' 已选中' : '')}" aria-label="">
+              <i class="iconfont right"></i>
+              <i class="iconfont wrong"></i>
+            </div>
+           
+            <div class="option" data-bind="text: choice.option() + '.'">B.</div>
+            <div class="content-wrapper">
+              <div class="content">
+                <!-- ko if: choice.title() -->
+                <div class="text" data-bind="html: choice.title()" role="button">四位一体  </div>
+                <!-- /ko -->
+                <!-- ko if: choice.linkType() == "video" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "audio" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "image" --><!-- /ko -->
+              </div>
+            </div>
+          </a>
+        
+          <a class="choice-item clearfix" style="color: #444444;" data-bind="attr: { 'id': 'choice' + choice.id()},
+          css: { image: choice.linkType() == 'image'},
+          click: $parent.clickChoice" role="button" href="javascript:;" id="choice23413225">
+            <div class="checkbox radio" data-bind="css: {
+              radio: $parent.question.type() == 1,
+              selected: choice.isSelected(),
+              right: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isCorrect(),
+              wrong: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isSelected() &amp;&amp; !choice.isCorrect()
+            },attr:{'aria-label': (choice.isSelected() === true ? ' 已选中' : '')}" aria-label="">
+              <i class="iconfont right"></i>
+              <i class="iconfont wrong"></i>
+            </div>
+           
+            <div class="option" data-bind="text: choice.option() + '.'">C.</div>
+            <div class="content-wrapper">
+              <div class="content">
+                <!-- ko if: choice.title() -->
+                <div class="text" data-bind="html: choice.title()" role="button">三位一体 </div>
+                <!-- /ko -->
+                <!-- ko if: choice.linkType() == "video" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "audio" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "image" --><!-- /ko -->
+              </div>
+            </div>
+          </a>
+        
+          <a class="choice-item clearfix" style="color: #444444;" data-bind="attr: { 'id': 'choice' + choice.id()},
+          css: { image: choice.linkType() == 'image'},
+          click: $parent.clickChoice" role="button" href="javascript:;" id="choice23413226">
+            <div class="checkbox radio" data-bind="css: {
+              radio: $parent.question.type() == 1,
+              selected: choice.isSelected(),
+              right: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isCorrect(),
+              wrong: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isSelected() &amp;&amp; !choice.isCorrect()
+            },attr:{'aria-label': (choice.isSelected() === true ? ' 已选中' : '')}" aria-label="">
+              <i class="iconfont right"></i>
+              <i class="iconfont wrong"></i>
+            </div>
+           
+            <div class="option" data-bind="text: choice.option() + '.'">D.</div>
+            <div class="content-wrapper">
+              <div class="content">
+                <!-- ko if: choice.title() -->
+                <div class="text" data-bind="html: choice.title()" role="button">六位一体</div>
+                <!-- /ko -->
+                <!-- ko if: choice.linkType() == "video" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "audio" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "image" --><!-- /ko -->
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <!-- /ko -->
+      <!-- ko if: question.type() == 4 --><!-- /ko -->
+      <!-- ko if: question.type() == 5 --><!-- /ko -->
+      <!-- ko if: question.type() == 12 --><!-- /ko -->
+      <!-- ko if: question.type() == 24 --><!-- /ko -->
+    </div>
+    <div class="split-screen-resize-handler" data-bind="event: { touchstart: stopDefaultEvent, touchend: stopDefaultEvent, touchmove: stopDefaultEvent }, touchstartBubble: false, touchendBubble: false, touchmoveBubble: false">
+      <div class="line"></div>
+    </div>
+  </div>
+  <div class="question-operation-wrapper" data-bind="">
+    <!-- ko ifnot: question.status() --><!-- /ko -->
+    <!-- ko if: question.status() && question.questionManyChance --><!-- /ko -->
+  </div>
+  <!-- ko if: question.type() != 24 || (question.type() == 24 && question.correctReply) -->
+  <div class="question-analysis-wrapper show" data-bind="css: { show: question.showAnalysis() &amp;&amp; ( question.questionShowAnswer || (!question.questionShowAnswer &amp;&amp; question.correctReply()) ) }">
+    <!-- ko if: question.type() != 24 -->
+    <div class="answer-result-tip">
+      <div class="tip-icon">
+        <!-- ko if: question.isCorrect() -->
+        <!-- ko if: question.type() != 5 -->
+        <i class="iconfont correct"></i>
+        <!-- /ko -->
+        <!-- ko if: question.type() == 5 --><!-- /ko -->
+        <!-- /ko -->
+        <!-- ko if: question.questionManyChance && !question.isCorrect() --><!-- /ko -->
+        <!-- ko if: !question.questionManyChance && !question.isCorrect() --><!-- /ko -->
+      </div>
+      <div class="tip-text">
+        <div class="message" data-bind="text:
+          question.answerTipType() == 1 &amp;&amp; question.type() != 5 ? $root.i18nMessageText().answerRight :
+          question.answerTipType() == 1 &amp;&amp; question.type() == 5 ? $root.i18nMessageText().answered :
+          question.answerTipType() == 2 ? $root.i18nMessageText().oneChanceWrong :
+          question.answerTipType() == 3 ? $root.i18nMessageText().oneChancePartialWrong :
+          question.answerTipType() == 4 ? $root.i18nMessageText().manyChanceWrong :
+          question.answerTipType() == 5 ? $root.i18nMessageText().manyChancePartialWrong : ''">回答正确！</div>
+      </div>
+    </div>
+    <div class="circle-line"></div>
+    <!-- /ko -->
+    <div class="answer-result-text">
+      <!-- ko if: question.type() != 24 && question.questionShowAnswer -->
+      <div class="correct-answer-area">
+        <span data-bind="text: $root.i18nMessageText().correctAnswer">正确答案：</span>
+        <span data-bind="html: question.type() == 4 ? (question.correctAnswer() == true ? $root.i18nMessageText().right : $root.i18nMessageText().wrong) : (question.type() == 3 ? $component.arrayToString(question.correctAnswer()) : question.correctAnswer())">A</span>
+      </div>
+      <!-- ko if: question.type() != 24 && question.status() -->
+      <div class="user-answer-area">
+        <span data-bind="text: $root.i18nMessageText().yourAnswer">你的答案：</span>
+        <span data-bind="html: question.answer() &amp;&amp; question.answer().length == 0 ? $root.i18nMessageText().unanswered : (question.type() == 4 ? (question.answer() == true ? $root.i18nMessageText().right : $root.i18nMessageText().wrong) : (question.type() == 3 ? $component.arrayToString(question.answer()) : question.answer()))">A</span>
+      </div>
+      <!-- /ko -->
+      <!-- /ko -->
+      <!-- ko if: question.correctReply && question.type() != 11 && question.type() != 17 && question.type() != 23 -->
+      <div>
+        <span data-bind="text: $root.i18nMessageText().explanation">答案解析：</span>
+        <span data-bind="html: question.correctReply"></span>
+      </div>
+      <!-- /ko -->
+      <!-- ko if: question.type() == 11 || question.type() == 17 || question.type() == 23 --><!-- /ko -->
+    </div>
+  </div>
+  <!-- /ko -->
+</div></div>
+    
+    <div class="question-element-node" data-bind="component: {
+        name: &quot;question-element-component&quot;,
+        params: {
+          question: question,
+          questionViewModel: $parent,
+          questionManyChance: $component.questionManyChance,
+          questionShowAnswer: $root.questionShowAnswer
+        }
+      }"><div class="question-wrapper finished show-answer right" data-bind="attr: { 'id': 'question' + question.id() },
+  css: {
+    'finished': question.status(),
+    'show-answer': question.questionShowAnswer,
+    'right': question.isCorrect(),
+    'wrong': !question.isCorrect(),
+    'sub-question': question.parentQuestion,
+    'split-screen-mode': isSplitScreen() &amp;&amp; !mobileMode,
+    'mobile-split-screen-mode': isSplitScreen() &amp;&amp; mobileMode
+  }" id="question10009089">
+  <div class="split-screen-wrapper">
+    <!-- ko if: question.type() == 24 --><!-- /ko -->
+    <div class="question-title-wrapper" data-bind="css: { 'parent-question': question.type() == 24 }">
+      <div class="question-title-scroller">
+        <div class="question-title-text not-IE" data-bind="css: { 'not-IE': !isIE() }">
+          <span class="question-sort" data-bind="text: (question.sort())">4</span><span class="question-sort-dot">.</span>
+          <span class="question-type-tag" data-bind="text: $root.i18nMessageText()[questionType[question.type()]]">单选题</span>
+          <!-- ko if: question.type() == 17 --><!-- /ko -->
+          <!-- ko if: isTitleFile(question) --><!-- /ko -->
+          <span data-bind="attr: { 'class': 'question-title-html question-type-' + question.type() }, html: question.title()" class="question-title-html question-type-1">构建生态文明体系，确保到()年节约资源和保护环境的空间格局、产业结构、生产方式、生活方式总体行程，生态环境治理实现根本好转。</span>
+        </div>
+        <!-- ko ifnot: isTitleFile(question) -->
+        <!-- ko foreach: { data: questionFiles, as: 'questionFile' } --><!-- /ko -->
+        <!-- /ko -->
+        <div class="custom-select" data-bind="if: activeSelect().choices"></div>
+      </div>
+      <div class="resize-handler" data-bind="event: { touchstart: stopDefaultEvent, touchend: stopDefaultEvent, touchmove: stopDefaultEvent }, touchstartBubble: false, touchendBubble: false, touchmoveBubble: false">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="question-body-wrapper">
+      <!-- ko if: question.type() == 1 || question.type() == 2 -->
+      <div class="choice-type">
+        <div class="choice-list clearfix" data-bind="foreach: { data: question.choices(), as: 'choice' }">
+          <a class="choice-item clearfix" style="color: #444444;" data-bind="attr: { 'id': 'choice' + choice.id()},
+          css: { image: choice.linkType() == 'image'},
+          click: $parent.clickChoice" role="button" href="javascript:;" id="choice23413227">
+            <div class="checkbox radio" data-bind="css: {
+              radio: $parent.question.type() == 1,
+              selected: choice.isSelected(),
+              right: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isCorrect(),
+              wrong: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isSelected() &amp;&amp; !choice.isCorrect()
+            },attr:{'aria-label': (choice.isSelected() === true ? ' 已选中' : '')}" aria-label="">
+              <i class="iconfont right"></i>
+              <i class="iconfont wrong"></i>
+            </div>
+           
+            <div class="option" data-bind="text: choice.option() + '.'">A.</div>
+            <div class="content-wrapper">
+              <div class="content">
+                <!-- ko if: choice.title() -->
+                <div class="text" data-bind="html: choice.title()" role="button">2021  </div>
+                <!-- /ko -->
+                <!-- ko if: choice.linkType() == "video" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "audio" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "image" --><!-- /ko -->
+              </div>
+            </div>
+          </a>
+        
+          <a class="choice-item clearfix" style="color: #444444;" data-bind="attr: { 'id': 'choice' + choice.id()},
+          css: { image: choice.linkType() == 'image'},
+          click: $parent.clickChoice" role="button" href="javascript:;" id="choice23413228">
+            <div class="checkbox radio selected right" data-bind="css: {
+              radio: $parent.question.type() == 1,
+              selected: choice.isSelected(),
+              right: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isCorrect(),
+              wrong: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isSelected() &amp;&amp; !choice.isCorrect()
+            },attr:{'aria-label': (choice.isSelected() === true ? ' 已选中' : '')}" aria-label=" 已选中">
+              <i class="iconfont right"></i>
+              <i class="iconfont wrong"></i>
+            </div>
+           
+            <div class="option" data-bind="text: choice.option() + '.'">B.</div>
+            <div class="content-wrapper">
+              <div class="content">
+                <!-- ko if: choice.title() -->
+                <div class="text" data-bind="html: choice.title()" role="button">2035  </div>
+                <!-- /ko -->
+                <!-- ko if: choice.linkType() == "video" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "audio" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "image" --><!-- /ko -->
+              </div>
+            </div>
+          </a>
+        
+          <a class="choice-item clearfix" style="color: #444444;" data-bind="attr: { 'id': 'choice' + choice.id()},
+          css: { image: choice.linkType() == 'image'},
+          click: $parent.clickChoice" role="button" href="javascript:;" id="choice23413229">
+            <div class="checkbox radio" data-bind="css: {
+              radio: $parent.question.type() == 1,
+              selected: choice.isSelected(),
+              right: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isCorrect(),
+              wrong: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isSelected() &amp;&amp; !choice.isCorrect()
+            },attr:{'aria-label': (choice.isSelected() === true ? ' 已选中' : '')}" aria-label="">
+              <i class="iconfont right"></i>
+              <i class="iconfont wrong"></i>
+            </div>
+           
+            <div class="option" data-bind="text: choice.option() + '.'">C.</div>
+            <div class="content-wrapper">
+              <div class="content">
+                <!-- ko if: choice.title() -->
+                <div class="text" data-bind="html: choice.title()" role="button">2050   </div>
+                <!-- /ko -->
+                <!-- ko if: choice.linkType() == "video" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "audio" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "image" --><!-- /ko -->
+              </div>
+            </div>
+          </a>
+        
+          <a class="choice-item clearfix" style="color: #444444;" data-bind="attr: { 'id': 'choice' + choice.id()},
+          css: { image: choice.linkType() == 'image'},
+          click: $parent.clickChoice" role="button" href="javascript:;" id="choice23413230">
+            <div class="checkbox radio" data-bind="css: {
+              radio: $parent.question.type() == 1,
+              selected: choice.isSelected(),
+              right: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isCorrect(),
+              wrong: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isSelected() &amp;&amp; !choice.isCorrect()
+            },attr:{'aria-label': (choice.isSelected() === true ? ' 已选中' : '')}" aria-label="">
+              <i class="iconfont right"></i>
+              <i class="iconfont wrong"></i>
+            </div>
+           
+            <div class="option" data-bind="text: choice.option() + '.'">D.</div>
+            <div class="content-wrapper">
+              <div class="content">
+                <!-- ko if: choice.title() -->
+                <div class="text" data-bind="html: choice.title()" role="button">2080</div>
+                <!-- /ko -->
+                <!-- ko if: choice.linkType() == "video" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "audio" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "image" --><!-- /ko -->
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <!-- /ko -->
+      <!-- ko if: question.type() == 4 --><!-- /ko -->
+      <!-- ko if: question.type() == 5 --><!-- /ko -->
+      <!-- ko if: question.type() == 12 --><!-- /ko -->
+      <!-- ko if: question.type() == 24 --><!-- /ko -->
+    </div>
+    <div class="split-screen-resize-handler" data-bind="event: { touchstart: stopDefaultEvent, touchend: stopDefaultEvent, touchmove: stopDefaultEvent }, touchstartBubble: false, touchendBubble: false, touchmoveBubble: false">
+      <div class="line"></div>
+    </div>
+  </div>
+  <div class="question-operation-wrapper" data-bind="">
+    <!-- ko ifnot: question.status() --><!-- /ko -->
+    <!-- ko if: question.status() && question.questionManyChance --><!-- /ko -->
+  </div>
+  <!-- ko if: question.type() != 24 || (question.type() == 24 && question.correctReply) -->
+  <div class="question-analysis-wrapper show" data-bind="css: { show: question.showAnalysis() &amp;&amp; ( question.questionShowAnswer || (!question.questionShowAnswer &amp;&amp; question.correctReply()) ) }">
+    <!-- ko if: question.type() != 24 -->
+    <div class="answer-result-tip">
+      <div class="tip-icon">
+        <!-- ko if: question.isCorrect() -->
+        <!-- ko if: question.type() != 5 -->
+        <i class="iconfont correct"></i>
+        <!-- /ko -->
+        <!-- ko if: question.type() == 5 --><!-- /ko -->
+        <!-- /ko -->
+        <!-- ko if: question.questionManyChance && !question.isCorrect() --><!-- /ko -->
+        <!-- ko if: !question.questionManyChance && !question.isCorrect() --><!-- /ko -->
+      </div>
+      <div class="tip-text">
+        <div class="message" data-bind="text:
+          question.answerTipType() == 1 &amp;&amp; question.type() != 5 ? $root.i18nMessageText().answerRight :
+          question.answerTipType() == 1 &amp;&amp; question.type() == 5 ? $root.i18nMessageText().answered :
+          question.answerTipType() == 2 ? $root.i18nMessageText().oneChanceWrong :
+          question.answerTipType() == 3 ? $root.i18nMessageText().oneChancePartialWrong :
+          question.answerTipType() == 4 ? $root.i18nMessageText().manyChanceWrong :
+          question.answerTipType() == 5 ? $root.i18nMessageText().manyChancePartialWrong : ''">回答正确！</div>
+      </div>
+    </div>
+    <div class="circle-line"></div>
+    <!-- /ko -->
+    <div class="answer-result-text">
+      <!-- ko if: question.type() != 24 && question.questionShowAnswer -->
+      <div class="correct-answer-area">
+        <span data-bind="text: $root.i18nMessageText().correctAnswer">正确答案：</span>
+        <span data-bind="html: question.type() == 4 ? (question.correctAnswer() == true ? $root.i18nMessageText().right : $root.i18nMessageText().wrong) : (question.type() == 3 ? $component.arrayToString(question.correctAnswer()) : question.correctAnswer())">B</span>
+      </div>
+      <!-- ko if: question.type() != 24 && question.status() -->
+      <div class="user-answer-area">
+        <span data-bind="text: $root.i18nMessageText().yourAnswer">你的答案：</span>
+        <span data-bind="html: question.answer() &amp;&amp; question.answer().length == 0 ? $root.i18nMessageText().unanswered : (question.type() == 4 ? (question.answer() == true ? $root.i18nMessageText().right : $root.i18nMessageText().wrong) : (question.type() == 3 ? $component.arrayToString(question.answer()) : question.answer()))">B</span>
+      </div>
+      <!-- /ko -->
+      <!-- /ko -->
+      <!-- ko if: question.correctReply && question.type() != 11 && question.type() != 17 && question.type() != 23 -->
+      <div>
+        <span data-bind="text: $root.i18nMessageText().explanation">答案解析：</span>
+        <span data-bind="html: question.correctReply"></span>
+      </div>
+      <!-- /ko -->
+      <!-- ko if: question.type() == 11 || question.type() == 17 || question.type() == 23 --><!-- /ko -->
+    </div>
+  </div>
+  <!-- /ko -->
+</div></div>
+    
+    <div class="question-element-node" data-bind="component: {
+        name: &quot;question-element-component&quot;,
+        params: {
+          question: question,
+          questionViewModel: $parent,
+          questionManyChance: $component.questionManyChance,
+          questionShowAnswer: $root.questionShowAnswer
+        }
+      }"><div class="question-wrapper finished show-answer right" data-bind="attr: { 'id': 'question' + question.id() },
+  css: {
+    'finished': question.status(),
+    'show-answer': question.questionShowAnswer,
+    'right': question.isCorrect(),
+    'wrong': !question.isCorrect(),
+    'sub-question': question.parentQuestion,
+    'split-screen-mode': isSplitScreen() &amp;&amp; !mobileMode,
+    'mobile-split-screen-mode': isSplitScreen() &amp;&amp; mobileMode
+  }" id="question10009090">
+  <div class="split-screen-wrapper">
+    <!-- ko if: question.type() == 24 --><!-- /ko -->
+    <div class="question-title-wrapper" data-bind="css: { 'parent-question': question.type() == 24 }">
+      <div class="question-title-scroller">
+        <div class="question-title-text not-IE" data-bind="css: { 'not-IE': !isIE() }">
+          <span class="question-sort" data-bind="text: (question.sort())">5</span><span class="question-sort-dot">.</span>
+          <span class="question-type-tag" data-bind="text: $root.i18nMessageText()[questionType[question.type()]]">单选题</span>
+          <!-- ko if: question.type() == 17 --><!-- /ko -->
+          <!-- ko if: isTitleFile(question) --><!-- /ko -->
+          <span data-bind="attr: { 'class': 'question-title-html question-type-' + question.type() }, html: question.title()" class="question-title-html question-type-1">构建发展新格局要坚持()这个战略基点，更好地吸引全球资源要素，形成参与国际经济合作和竞争的新优势。</span>
+        </div>
+        <!-- ko ifnot: isTitleFile(question) -->
+        <!-- ko foreach: { data: questionFiles, as: 'questionFile' } --><!-- /ko -->
+        <!-- /ko -->
+        <div class="custom-select" data-bind="if: activeSelect().choices"></div>
+      </div>
+      <div class="resize-handler" data-bind="event: { touchstart: stopDefaultEvent, touchend: stopDefaultEvent, touchmove: stopDefaultEvent }, touchstartBubble: false, touchendBubble: false, touchmoveBubble: false">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="question-body-wrapper">
+      <!-- ko if: question.type() == 1 || question.type() == 2 -->
+      <div class="choice-type">
+        <div class="choice-list clearfix" data-bind="foreach: { data: question.choices(), as: 'choice' }">
+          <a class="choice-item clearfix" style="color: #444444;" data-bind="attr: { 'id': 'choice' + choice.id()},
+          css: { image: choice.linkType() == 'image'},
+          click: $parent.clickChoice" role="button" href="javascript:;" id="choice23413231">
+            <div class="checkbox radio" data-bind="css: {
+              radio: $parent.question.type() == 1,
+              selected: choice.isSelected(),
+              right: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isCorrect(),
+              wrong: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isSelected() &amp;&amp; !choice.isCorrect()
+            },attr:{'aria-label': (choice.isSelected() === true ? ' 已选中' : '')}" aria-label="">
+              <i class="iconfont right"></i>
+              <i class="iconfont wrong"></i>
+            </div>
+           
+            <div class="option" data-bind="text: choice.option() + '.'">A.</div>
+            <div class="content-wrapper">
+              <div class="content">
+                <!-- ko if: choice.title() -->
+                <div class="text" data-bind="html: choice.title()" role="button">共同发展 </div>
+                <!-- /ko -->
+                <!-- ko if: choice.linkType() == "video" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "audio" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "image" --><!-- /ko -->
+              </div>
+            </div>
+          </a>
+        
+          <a class="choice-item clearfix" style="color: #444444;" data-bind="attr: { 'id': 'choice' + choice.id()},
+          css: { image: choice.linkType() == 'image'},
+          click: $parent.clickChoice" role="button" href="javascript:;" id="choice23413232">
+            <div class="checkbox radio" data-bind="css: {
+              radio: $parent.question.type() == 1,
+              selected: choice.isSelected(),
+              right: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isCorrect(),
+              wrong: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isSelected() &amp;&amp; !choice.isCorrect()
+            },attr:{'aria-label': (choice.isSelected() === true ? ' 已选中' : '')}" aria-label="">
+              <i class="iconfont right"></i>
+              <i class="iconfont wrong"></i>
+            </div>
+           
+            <div class="option" data-bind="text: choice.option() + '.'">B.</div>
+            <div class="content-wrapper">
+              <div class="content">
+                <!-- ko if: choice.title() -->
+                <div class="text" data-bind="html: choice.title()" role="button">对外开放  </div>
+                <!-- /ko -->
+                <!-- ko if: choice.linkType() == "video" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "audio" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "image" --><!-- /ko -->
+              </div>
+            </div>
+          </a>
+        
+          <a class="choice-item clearfix" style="color: #444444;" data-bind="attr: { 'id': 'choice' + choice.id()},
+          css: { image: choice.linkType() == 'image'},
+          click: $parent.clickChoice" role="button" href="javascript:;" id="choice23413233">
+            <div class="checkbox radio selected right" data-bind="css: {
+              radio: $parent.question.type() == 1,
+              selected: choice.isSelected(),
+              right: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isCorrect(),
+              wrong: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isSelected() &amp;&amp; !choice.isCorrect()
+            },attr:{'aria-label': (choice.isSelected() === true ? ' 已选中' : '')}" aria-label=" 已选中">
+              <i class="iconfont right"></i>
+              <i class="iconfont wrong"></i>
+            </div>
+           
+            <div class="option" data-bind="text: choice.option() + '.'">C.</div>
+            <div class="content-wrapper">
+              <div class="content">
+                <!-- ko if: choice.title() -->
+                <div class="text" data-bind="html: choice.title()" role="button">扩大内需   </div>
+                <!-- /ko -->
+                <!-- ko if: choice.linkType() == "video" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "audio" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "image" --><!-- /ko -->
+              </div>
+            </div>
+          </a>
+        
+          <a class="choice-item clearfix" style="color: #444444;" data-bind="attr: { 'id': 'choice' + choice.id()},
+          css: { image: choice.linkType() == 'image'},
+          click: $parent.clickChoice" role="button" href="javascript:;" id="choice23413234">
+            <div class="checkbox radio" data-bind="css: {
+              radio: $parent.question.type() == 1,
+              selected: choice.isSelected(),
+              right: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isCorrect(),
+              wrong: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isSelected() &amp;&amp; !choice.isCorrect()
+            },attr:{'aria-label': (choice.isSelected() === true ? ' 已选中' : '')}" aria-label="">
+              <i class="iconfont right"></i>
+              <i class="iconfont wrong"></i>
+            </div>
+           
+            <div class="option" data-bind="text: choice.option() + '.'">D.</div>
+            <div class="content-wrapper">
+              <div class="content">
+                <!-- ko if: choice.title() -->
+                <div class="text" data-bind="html: choice.title()" role="button">全球化</div>
+                <!-- /ko -->
+                <!-- ko if: choice.linkType() == "video" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "audio" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "image" --><!-- /ko -->
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <!-- /ko -->
+      <!-- ko if: question.type() == 4 --><!-- /ko -->
+      <!-- ko if: question.type() == 5 --><!-- /ko -->
+      <!-- ko if: question.type() == 12 --><!-- /ko -->
+      <!-- ko if: question.type() == 24 --><!-- /ko -->
+    </div>
+    <div class="split-screen-resize-handler" data-bind="event: { touchstart: stopDefaultEvent, touchend: stopDefaultEvent, touchmove: stopDefaultEvent }, touchstartBubble: false, touchendBubble: false, touchmoveBubble: false">
+      <div class="line"></div>
+    </div>
+  </div>
+  <div class="question-operation-wrapper" data-bind="">
+    <!-- ko ifnot: question.status() --><!-- /ko -->
+    <!-- ko if: question.status() && question.questionManyChance --><!-- /ko -->
+  </div>
+  <!-- ko if: question.type() != 24 || (question.type() == 24 && question.correctReply) -->
+  <div class="question-analysis-wrapper show" data-bind="css: { show: question.showAnalysis() &amp;&amp; ( question.questionShowAnswer || (!question.questionShowAnswer &amp;&amp; question.correctReply()) ) }">
+    <!-- ko if: question.type() != 24 -->
+    <div class="answer-result-tip">
+      <div class="tip-icon">
+        <!-- ko if: question.isCorrect() -->
+        <!-- ko if: question.type() != 5 -->
+        <i class="iconfont correct"></i>
+        <!-- /ko -->
+        <!-- ko if: question.type() == 5 --><!-- /ko -->
+        <!-- /ko -->
+        <!-- ko if: question.questionManyChance && !question.isCorrect() --><!-- /ko -->
+        <!-- ko if: !question.questionManyChance && !question.isCorrect() --><!-- /ko -->
+      </div>
+      <div class="tip-text">
+        <div class="message" data-bind="text:
+          question.answerTipType() == 1 &amp;&amp; question.type() != 5 ? $root.i18nMessageText().answerRight :
+          question.answerTipType() == 1 &amp;&amp; question.type() == 5 ? $root.i18nMessageText().answered :
+          question.answerTipType() == 2 ? $root.i18nMessageText().oneChanceWrong :
+          question.answerTipType() == 3 ? $root.i18nMessageText().oneChancePartialWrong :
+          question.answerTipType() == 4 ? $root.i18nMessageText().manyChanceWrong :
+          question.answerTipType() == 5 ? $root.i18nMessageText().manyChancePartialWrong : ''">回答正确！</div>
+      </div>
+    </div>
+    <div class="circle-line"></div>
+    <!-- /ko -->
+    <div class="answer-result-text">
+      <!-- ko if: question.type() != 24 && question.questionShowAnswer -->
+      <div class="correct-answer-area">
+        <span data-bind="text: $root.i18nMessageText().correctAnswer">正确答案：</span>
+        <span data-bind="html: question.type() == 4 ? (question.correctAnswer() == true ? $root.i18nMessageText().right : $root.i18nMessageText().wrong) : (question.type() == 3 ? $component.arrayToString(question.correctAnswer()) : question.correctAnswer())">C</span>
+      </div>
+      <!-- ko if: question.type() != 24 && question.status() -->
+      <div class="user-answer-area">
+        <span data-bind="text: $root.i18nMessageText().yourAnswer">你的答案：</span>
+        <span data-bind="html: question.answer() &amp;&amp; question.answer().length == 0 ? $root.i18nMessageText().unanswered : (question.type() == 4 ? (question.answer() == true ? $root.i18nMessageText().right : $root.i18nMessageText().wrong) : (question.type() == 3 ? $component.arrayToString(question.answer()) : question.answer()))">C</span>
+      </div>
+      <!-- /ko -->
+      <!-- /ko -->
+      <!-- ko if: question.correctReply && question.type() != 11 && question.type() != 17 && question.type() != 23 -->
+      <div>
+        <span data-bind="text: $root.i18nMessageText().explanation">答案解析：</span>
+        <span data-bind="html: question.correctReply"></span>
+      </div>
+      <!-- /ko -->
+      <!-- ko if: question.type() == 11 || question.type() == 17 || question.type() == 23 --><!-- /ko -->
+    </div>
+  </div>
+  <!-- /ko -->
+</div></div>
+    
+    <div class="question-element-node" data-bind="component: {
+        name: &quot;question-element-component&quot;,
+        params: {
+          question: question,
+          questionViewModel: $parent,
+          questionManyChance: $component.questionManyChance,
+          questionShowAnswer: $root.questionShowAnswer
+        }
+      }"><div class="question-wrapper finished show-answer right" data-bind="attr: { 'id': 'question' + question.id() },
+  css: {
+    'finished': question.status(),
+    'show-answer': question.questionShowAnswer,
+    'right': question.isCorrect(),
+    'wrong': !question.isCorrect(),
+    'sub-question': question.parentQuestion,
+    'split-screen-mode': isSplitScreen() &amp;&amp; !mobileMode,
+    'mobile-split-screen-mode': isSplitScreen() &amp;&amp; mobileMode
+  }" id="question10009091">
+  <div class="split-screen-wrapper">
+    <!-- ko if: question.type() == 24 --><!-- /ko -->
+    <div class="question-title-wrapper" data-bind="css: { 'parent-question': question.type() == 24 }">
+      <div class="question-title-scroller">
+        <div class="question-title-text not-IE" data-bind="css: { 'not-IE': !isIE() }">
+          <span class="question-sort" data-bind="text: (question.sort())">6</span><span class="question-sort-dot">.</span>
+          <span class="question-type-tag" data-bind="text: $root.i18nMessageText()[questionType[question.type()]]">多选题</span>
+          <!-- ko if: question.type() == 17 --><!-- /ko -->
+          <!-- ko if: isTitleFile(question) --><!-- /ko -->
+          <span data-bind="attr: { 'class': 'question-title-html question-type-' + question.type() }, html: question.title()" class="question-title-html question-type-2">发挥法治引领、规范、保障作用，推动各项制度更加成熟、更加定型，逐步实现国家治理()</span>
+        </div>
+        <!-- ko ifnot: isTitleFile(question) -->
+        <!-- ko foreach: { data: questionFiles, as: 'questionFile' } --><!-- /ko -->
+        <!-- /ko -->
+        <div class="custom-select" data-bind="if: activeSelect().choices"></div>
+      </div>
+      <div class="resize-handler" data-bind="event: { touchstart: stopDefaultEvent, touchend: stopDefaultEvent, touchmove: stopDefaultEvent }, touchstartBubble: false, touchendBubble: false, touchmoveBubble: false">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="question-body-wrapper">
+      <!-- ko if: question.type() == 1 || question.type() == 2 -->
+      <div class="choice-type">
+        <div class="choice-list clearfix" data-bind="foreach: { data: question.choices(), as: 'choice' }">
+          <a class="choice-item clearfix" style="color: #444444;" data-bind="attr: { 'id': 'choice' + choice.id()},
+          css: { image: choice.linkType() == 'image'},
+          click: $parent.clickChoice" role="button" href="javascript:;" id="choice23413235">
+            <div class="checkbox selected right" data-bind="css: {
+              radio: $parent.question.type() == 1,
+              selected: choice.isSelected(),
+              right: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isCorrect(),
+              wrong: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isSelected() &amp;&amp; !choice.isCorrect()
+            },attr:{'aria-label': (choice.isSelected() === true ? ' 已选中' : '')}" aria-label=" 已选中">
+              <i class="iconfont right"></i>
+              <i class="iconfont wrong"></i>
+            </div>
+           
+            <div class="option" data-bind="text: choice.option() + '.'">A.</div>
+            <div class="content-wrapper">
+              <div class="content">
+                <!-- ko if: choice.title() -->
+                <div class="text" data-bind="html: choice.title()" role="button">制度化 </div>
+                <!-- /ko -->
+                <!-- ko if: choice.linkType() == "video" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "audio" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "image" --><!-- /ko -->
+              </div>
+            </div>
+          </a>
+        
+          <a class="choice-item clearfix" style="color: #444444;" data-bind="attr: { 'id': 'choice' + choice.id()},
+          css: { image: choice.linkType() == 'image'},
+          click: $parent.clickChoice" role="button" href="javascript:;" id="choice23413236">
+            <div class="checkbox selected right" data-bind="css: {
+              radio: $parent.question.type() == 1,
+              selected: choice.isSelected(),
+              right: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isCorrect(),
+              wrong: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isSelected() &amp;&amp; !choice.isCorrect()
+            },attr:{'aria-label': (choice.isSelected() === true ? ' 已选中' : '')}" aria-label=" 已选中">
+              <i class="iconfont right"></i>
+              <i class="iconfont wrong"></i>
+            </div>
+           
+            <div class="option" data-bind="text: choice.option() + '.'">B.</div>
+            <div class="content-wrapper">
+              <div class="content">
+                <!-- ko if: choice.title() -->
+                <div class="text" data-bind="html: choice.title()" role="button">程序化  </div>
+                <!-- /ko -->
+                <!-- ko if: choice.linkType() == "video" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "audio" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "image" --><!-- /ko -->
+              </div>
+            </div>
+          </a>
+        
+          <a class="choice-item clearfix" style="color: #444444;" data-bind="attr: { 'id': 'choice' + choice.id()},
+          css: { image: choice.linkType() == 'image'},
+          click: $parent.clickChoice" role="button" href="javascript:;" id="choice23413237">
+            <div class="checkbox selected right" data-bind="css: {
+              radio: $parent.question.type() == 1,
+              selected: choice.isSelected(),
+              right: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isCorrect(),
+              wrong: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isSelected() &amp;&amp; !choice.isCorrect()
+            },attr:{'aria-label': (choice.isSelected() === true ? ' 已选中' : '')}" aria-label=" 已选中">
+              <i class="iconfont right"></i>
+              <i class="iconfont wrong"></i>
+            </div>
+           
+            <div class="option" data-bind="text: choice.option() + '.'">C.</div>
+            <div class="content-wrapper">
+              <div class="content">
+                <!-- ko if: choice.title() -->
+                <div class="text" data-bind="html: choice.title()" role="button">规范化   </div>
+                <!-- /ko -->
+                <!-- ko if: choice.linkType() == "video" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "audio" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "image" --><!-- /ko -->
+              </div>
+            </div>
+          </a>
+        
+          <a class="choice-item clearfix" style="color: #444444;" data-bind="attr: { 'id': 'choice' + choice.id()},
+          css: { image: choice.linkType() == 'image'},
+          click: $parent.clickChoice" role="button" href="javascript:;" id="choice23413238">
+            <div class="checkbox selected right" data-bind="css: {
+              radio: $parent.question.type() == 1,
+              selected: choice.isSelected(),
+              right: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isCorrect(),
+              wrong: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isSelected() &amp;&amp; !choice.isCorrect()
+            },attr:{'aria-label': (choice.isSelected() === true ? ' 已选中' : '')}" aria-label=" 已选中">
+              <i class="iconfont right"></i>
+              <i class="iconfont wrong"></i>
+            </div>
+           
+            <div class="option" data-bind="text: choice.option() + '.'">D.</div>
+            <div class="content-wrapper">
+              <div class="content">
+                <!-- ko if: choice.title() -->
+                <div class="text" data-bind="html: choice.title()" role="button">法制化</div>
+                <!-- /ko -->
+                <!-- ko if: choice.linkType() == "video" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "audio" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "image" --><!-- /ko -->
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <!-- /ko -->
+      <!-- ko if: question.type() == 4 --><!-- /ko -->
+      <!-- ko if: question.type() == 5 --><!-- /ko -->
+      <!-- ko if: question.type() == 12 --><!-- /ko -->
+      <!-- ko if: question.type() == 24 --><!-- /ko -->
+    </div>
+    <div class="split-screen-resize-handler" data-bind="event: { touchstart: stopDefaultEvent, touchend: stopDefaultEvent, touchmove: stopDefaultEvent }, touchstartBubble: false, touchendBubble: false, touchmoveBubble: false">
+      <div class="line"></div>
+    </div>
+  </div>
+  <div class="question-operation-wrapper" data-bind="">
+    <!-- ko ifnot: question.status() --><!-- /ko -->
+    <!-- ko if: question.status() && question.questionManyChance --><!-- /ko -->
+  </div>
+  <!-- ko if: question.type() != 24 || (question.type() == 24 && question.correctReply) -->
+  <div class="question-analysis-wrapper show" data-bind="css: { show: question.showAnalysis() &amp;&amp; ( question.questionShowAnswer || (!question.questionShowAnswer &amp;&amp; question.correctReply()) ) }">
+    <!-- ko if: question.type() != 24 -->
+    <div class="answer-result-tip">
+      <div class="tip-icon">
+        <!-- ko if: question.isCorrect() -->
+        <!-- ko if: question.type() != 5 -->
+        <i class="iconfont correct"></i>
+        <!-- /ko -->
+        <!-- ko if: question.type() == 5 --><!-- /ko -->
+        <!-- /ko -->
+        <!-- ko if: question.questionManyChance && !question.isCorrect() --><!-- /ko -->
+        <!-- ko if: !question.questionManyChance && !question.isCorrect() --><!-- /ko -->
+      </div>
+      <div class="tip-text">
+        <div class="message" data-bind="text:
+          question.answerTipType() == 1 &amp;&amp; question.type() != 5 ? $root.i18nMessageText().answerRight :
+          question.answerTipType() == 1 &amp;&amp; question.type() == 5 ? $root.i18nMessageText().answered :
+          question.answerTipType() == 2 ? $root.i18nMessageText().oneChanceWrong :
+          question.answerTipType() == 3 ? $root.i18nMessageText().oneChancePartialWrong :
+          question.answerTipType() == 4 ? $root.i18nMessageText().manyChanceWrong :
+          question.answerTipType() == 5 ? $root.i18nMessageText().manyChancePartialWrong : ''">回答正确！</div>
+      </div>
+    </div>
+    <div class="circle-line"></div>
+    <!-- /ko -->
+    <div class="answer-result-text">
+      <!-- ko if: question.type() != 24 && question.questionShowAnswer -->
+      <div class="correct-answer-area">
+        <span data-bind="text: $root.i18nMessageText().correctAnswer">正确答案：</span>
+        <span data-bind="html: question.type() == 4 ? (question.correctAnswer() == true ? $root.i18nMessageText().right : $root.i18nMessageText().wrong) : (question.type() == 3 ? $component.arrayToString(question.correctAnswer()) : question.correctAnswer())">A,B,C,D</span>
+      </div>
+      <!-- ko if: question.type() != 24 && question.status() -->
+      <div class="user-answer-area">
+        <span data-bind="text: $root.i18nMessageText().yourAnswer">你的答案：</span>
+        <span data-bind="html: question.answer() &amp;&amp; question.answer().length == 0 ? $root.i18nMessageText().unanswered : (question.type() == 4 ? (question.answer() == true ? $root.i18nMessageText().right : $root.i18nMessageText().wrong) : (question.type() == 3 ? $component.arrayToString(question.answer()) : question.answer()))">A,B,C,D</span>
+      </div>
+      <!-- /ko -->
+      <!-- /ko -->
+      <!-- ko if: question.correctReply && question.type() != 11 && question.type() != 17 && question.type() != 23 -->
+      <div>
+        <span data-bind="text: $root.i18nMessageText().explanation">答案解析：</span>
+        <span data-bind="html: question.correctReply"></span>
+      </div>
+      <!-- /ko -->
+      <!-- ko if: question.type() == 11 || question.type() == 17 || question.type() == 23 --><!-- /ko -->
+    </div>
+  </div>
+  <!-- /ko -->
+</div></div>
+    
+    <div class="question-element-node" data-bind="component: {
+        name: &quot;question-element-component&quot;,
+        params: {
+          question: question,
+          questionViewModel: $parent,
+          questionManyChance: $component.questionManyChance,
+          questionShowAnswer: $root.questionShowAnswer
+        }
+      }"><div class="question-wrapper finished show-answer right" data-bind="attr: { 'id': 'question' + question.id() },
+  css: {
+    'finished': question.status(),
+    'show-answer': question.questionShowAnswer,
+    'right': question.isCorrect(),
+    'wrong': !question.isCorrect(),
+    'sub-question': question.parentQuestion,
+    'split-screen-mode': isSplitScreen() &amp;&amp; !mobileMode,
+    'mobile-split-screen-mode': isSplitScreen() &amp;&amp; mobileMode
+  }" id="question10009092">
+  <div class="split-screen-wrapper">
+    <!-- ko if: question.type() == 24 --><!-- /ko -->
+    <div class="question-title-wrapper" data-bind="css: { 'parent-question': question.type() == 24 }">
+      <div class="question-title-scroller">
+        <div class="question-title-text not-IE" data-bind="css: { 'not-IE': !isIE() }">
+          <span class="question-sort" data-bind="text: (question.sort())">7</span><span class="question-sort-dot">.</span>
+          <span class="question-type-tag" data-bind="text: $root.i18nMessageText()[questionType[question.type()]]">多选题</span>
+          <!-- ko if: question.type() == 17 --><!-- /ko -->
+          <!-- ko if: isTitleFile(question) --><!-- /ko -->
+          <span data-bind="attr: { 'class': 'question-title-html question-type-' + question.type() }, html: question.title()" class="question-title-html question-type-2">坚定不移贯彻新发展理念，推动(  )、生态文明建设取得新的重大进展，为全面建成小康社会打下更为坚实的基础。</span>
+        </div>
+        <!-- ko ifnot: isTitleFile(question) -->
+        <!-- ko foreach: { data: questionFiles, as: 'questionFile' } --><!-- /ko -->
+        <!-- /ko -->
+        <div class="custom-select" data-bind="if: activeSelect().choices"></div>
+      </div>
+      <div class="resize-handler" data-bind="event: { touchstart: stopDefaultEvent, touchend: stopDefaultEvent, touchmove: stopDefaultEvent }, touchstartBubble: false, touchendBubble: false, touchmoveBubble: false">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="question-body-wrapper">
+      <!-- ko if: question.type() == 1 || question.type() == 2 -->
+      <div class="choice-type">
+        <div class="choice-list clearfix" data-bind="foreach: { data: question.choices(), as: 'choice' }">
+          <a class="choice-item clearfix" style="color: #444444;" data-bind="attr: { 'id': 'choice' + choice.id()},
+          css: { image: choice.linkType() == 'image'},
+          click: $parent.clickChoice" role="button" href="javascript:;" id="choice23413239">
+            <div class="checkbox selected right" data-bind="css: {
+              radio: $parent.question.type() == 1,
+              selected: choice.isSelected(),
+              right: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isCorrect(),
+              wrong: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isSelected() &amp;&amp; !choice.isCorrect()
+            },attr:{'aria-label': (choice.isSelected() === true ? ' 已选中' : '')}" aria-label=" 已选中">
+              <i class="iconfont right"></i>
+              <i class="iconfont wrong"></i>
+            </div>
+           
+            <div class="option" data-bind="text: choice.option() + '.'">A.</div>
+            <div class="content-wrapper">
+              <div class="content">
+                <!-- ko if: choice.title() -->
+                <div class="text" data-bind="html: choice.title()" role="button">经济建设  </div>
+                <!-- /ko -->
+                <!-- ko if: choice.linkType() == "video" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "audio" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "image" --><!-- /ko -->
+              </div>
+            </div>
+          </a>
+        
+          <a class="choice-item clearfix" style="color: #444444;" data-bind="attr: { 'id': 'choice' + choice.id()},
+          css: { image: choice.linkType() == 'image'},
+          click: $parent.clickChoice" role="button" href="javascript:;" id="choice23413240">
+            <div class="checkbox selected right" data-bind="css: {
+              radio: $parent.question.type() == 1,
+              selected: choice.isSelected(),
+              right: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isCorrect(),
+              wrong: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isSelected() &amp;&amp; !choice.isCorrect()
+            },attr:{'aria-label': (choice.isSelected() === true ? ' 已选中' : '')}" aria-label=" 已选中">
+              <i class="iconfont right"></i>
+              <i class="iconfont wrong"></i>
+            </div>
+           
+            <div class="option" data-bind="text: choice.option() + '.'">B.</div>
+            <div class="content-wrapper">
+              <div class="content">
+                <!-- ko if: choice.title() -->
+                <div class="text" data-bind="html: choice.title()" role="button">政治建设  </div>
+                <!-- /ko -->
+                <!-- ko if: choice.linkType() == "video" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "audio" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "image" --><!-- /ko -->
+              </div>
+            </div>
+          </a>
+        
+          <a class="choice-item clearfix" style="color: #444444;" data-bind="attr: { 'id': 'choice' + choice.id()},
+          css: { image: choice.linkType() == 'image'},
+          click: $parent.clickChoice" role="button" href="javascript:;" id="choice23413241">
+            <div class="checkbox selected right" data-bind="css: {
+              radio: $parent.question.type() == 1,
+              selected: choice.isSelected(),
+              right: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isCorrect(),
+              wrong: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isSelected() &amp;&amp; !choice.isCorrect()
+            },attr:{'aria-label': (choice.isSelected() === true ? ' 已选中' : '')}" aria-label=" 已选中">
+              <i class="iconfont right"></i>
+              <i class="iconfont wrong"></i>
+            </div>
+           
+            <div class="option" data-bind="text: choice.option() + '.'">C.</div>
+            <div class="content-wrapper">
+              <div class="content">
+                <!-- ko if: choice.title() -->
+                <div class="text" data-bind="html: choice.title()" role="button">文化建设   </div>
+                <!-- /ko -->
+                <!-- ko if: choice.linkType() == "video" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "audio" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "image" --><!-- /ko -->
+              </div>
+            </div>
+          </a>
+        
+          <a class="choice-item clearfix" style="color: #444444;" data-bind="attr: { 'id': 'choice' + choice.id()},
+          css: { image: choice.linkType() == 'image'},
+          click: $parent.clickChoice" role="button" href="javascript:;" id="choice23413242">
+            <div class="checkbox selected right" data-bind="css: {
+              radio: $parent.question.type() == 1,
+              selected: choice.isSelected(),
+              right: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isCorrect(),
+              wrong: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isSelected() &amp;&amp; !choice.isCorrect()
+            },attr:{'aria-label': (choice.isSelected() === true ? ' 已选中' : '')}" aria-label=" 已选中">
+              <i class="iconfont right"></i>
+              <i class="iconfont wrong"></i>
+            </div>
+           
+            <div class="option" data-bind="text: choice.option() + '.'">D.</div>
+            <div class="content-wrapper">
+              <div class="content">
+                <!-- ko if: choice.title() -->
+                <div class="text" data-bind="html: choice.title()" role="button">社会建设</div>
+                <!-- /ko -->
+                <!-- ko if: choice.linkType() == "video" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "audio" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "image" --><!-- /ko -->
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <!-- /ko -->
+      <!-- ko if: question.type() == 4 --><!-- /ko -->
+      <!-- ko if: question.type() == 5 --><!-- /ko -->
+      <!-- ko if: question.type() == 12 --><!-- /ko -->
+      <!-- ko if: question.type() == 24 --><!-- /ko -->
+    </div>
+    <div class="split-screen-resize-handler" data-bind="event: { touchstart: stopDefaultEvent, touchend: stopDefaultEvent, touchmove: stopDefaultEvent }, touchstartBubble: false, touchendBubble: false, touchmoveBubble: false">
+      <div class="line"></div>
+    </div>
+  </div>
+  <div class="question-operation-wrapper" data-bind="">
+    <!-- ko ifnot: question.status() --><!-- /ko -->
+    <!-- ko if: question.status() && question.questionManyChance --><!-- /ko -->
+  </div>
+  <!-- ko if: question.type() != 24 || (question.type() == 24 && question.correctReply) -->
+  <div class="question-analysis-wrapper show" data-bind="css: { show: question.showAnalysis() &amp;&amp; ( question.questionShowAnswer || (!question.questionShowAnswer &amp;&amp; question.correctReply()) ) }">
+    <!-- ko if: question.type() != 24 -->
+    <div class="answer-result-tip">
+      <div class="tip-icon">
+        <!-- ko if: question.isCorrect() -->
+        <!-- ko if: question.type() != 5 -->
+        <i class="iconfont correct"></i>
+        <!-- /ko -->
+        <!-- ko if: question.type() == 5 --><!-- /ko -->
+        <!-- /ko -->
+        <!-- ko if: question.questionManyChance && !question.isCorrect() --><!-- /ko -->
+        <!-- ko if: !question.questionManyChance && !question.isCorrect() --><!-- /ko -->
+      </div>
+      <div class="tip-text">
+        <div class="message" data-bind="text:
+          question.answerTipType() == 1 &amp;&amp; question.type() != 5 ? $root.i18nMessageText().answerRight :
+          question.answerTipType() == 1 &amp;&amp; question.type() == 5 ? $root.i18nMessageText().answered :
+          question.answerTipType() == 2 ? $root.i18nMessageText().oneChanceWrong :
+          question.answerTipType() == 3 ? $root.i18nMessageText().oneChancePartialWrong :
+          question.answerTipType() == 4 ? $root.i18nMessageText().manyChanceWrong :
+          question.answerTipType() == 5 ? $root.i18nMessageText().manyChancePartialWrong : ''">回答正确！</div>
+      </div>
+    </div>
+    <div class="circle-line"></div>
+    <!-- /ko -->
+    <div class="answer-result-text">
+      <!-- ko if: question.type() != 24 && question.questionShowAnswer -->
+      <div class="correct-answer-area">
+        <span data-bind="text: $root.i18nMessageText().correctAnswer">正确答案：</span>
+        <span data-bind="html: question.type() == 4 ? (question.correctAnswer() == true ? $root.i18nMessageText().right : $root.i18nMessageText().wrong) : (question.type() == 3 ? $component.arrayToString(question.correctAnswer()) : question.correctAnswer())">A,B,C,D</span>
+      </div>
+      <!-- ko if: question.type() != 24 && question.status() -->
+      <div class="user-answer-area">
+        <span data-bind="text: $root.i18nMessageText().yourAnswer">你的答案：</span>
+        <span data-bind="html: question.answer() &amp;&amp; question.answer().length == 0 ? $root.i18nMessageText().unanswered : (question.type() == 4 ? (question.answer() == true ? $root.i18nMessageText().right : $root.i18nMessageText().wrong) : (question.type() == 3 ? $component.arrayToString(question.answer()) : question.answer()))">A,B,C,D</span>
+      </div>
+      <!-- /ko -->
+      <!-- /ko -->
+      <!-- ko if: question.correctReply && question.type() != 11 && question.type() != 17 && question.type() != 23 -->
+      <div>
+        <span data-bind="text: $root.i18nMessageText().explanation">答案解析：</span>
+        <span data-bind="html: question.correctReply"></span>
+      </div>
+      <!-- /ko -->
+      <!-- ko if: question.type() == 11 || question.type() == 17 || question.type() == 23 --><!-- /ko -->
+    </div>
+  </div>
+  <!-- /ko -->
+</div></div>
+    
+    <div class="question-element-node" data-bind="component: {
+        name: &quot;question-element-component&quot;,
+        params: {
+          question: question,
+          questionViewModel: $parent,
+          questionManyChance: $component.questionManyChance,
+          questionShowAnswer: $root.questionShowAnswer
+        }
+      }"><div class="question-wrapper finished show-answer right" data-bind="attr: { 'id': 'question' + question.id() },
+  css: {
+    'finished': question.status(),
+    'show-answer': question.questionShowAnswer,
+    'right': question.isCorrect(),
+    'wrong': !question.isCorrect(),
+    'sub-question': question.parentQuestion,
+    'split-screen-mode': isSplitScreen() &amp;&amp; !mobileMode,
+    'mobile-split-screen-mode': isSplitScreen() &amp;&amp; mobileMode
+  }" id="question10009093">
+  <div class="split-screen-wrapper">
+    <!-- ko if: question.type() == 24 --><!-- /ko -->
+    <div class="question-title-wrapper" data-bind="css: { 'parent-question': question.type() == 24 }">
+      <div class="question-title-scroller">
+        <div class="question-title-text not-IE" data-bind="css: { 'not-IE': !isIE() }">
+          <span class="question-sort" data-bind="text: (question.sort())">8</span><span class="question-sort-dot">.</span>
+          <span class="question-type-tag" data-bind="text: $root.i18nMessageText()[questionType[question.type()]]">多选题</span>
+          <!-- ko if: question.type() == 17 --><!-- /ko -->
+          <!-- ko if: isTitleFile(question) --><!-- /ko -->
+          <span data-bind="attr: { 'class': 'question-title-html question-type-' + question.type() }, html: question.title()" class="question-title-html question-type-2">党中央着眼于生态文明全局，明确(   )的治水思路，黄河流域经济社会发展和百姓生活发生了很大变化。</span>
+        </div>
+        <!-- ko ifnot: isTitleFile(question) -->
+        <!-- ko foreach: { data: questionFiles, as: 'questionFile' } --><!-- /ko -->
+        <!-- /ko -->
+        <div class="custom-select" data-bind="if: activeSelect().choices"></div>
+      </div>
+      <div class="resize-handler" data-bind="event: { touchstart: stopDefaultEvent, touchend: stopDefaultEvent, touchmove: stopDefaultEvent }, touchstartBubble: false, touchendBubble: false, touchmoveBubble: false">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="question-body-wrapper">
+      <!-- ko if: question.type() == 1 || question.type() == 2 -->
+      <div class="choice-type">
+        <div class="choice-list clearfix" data-bind="foreach: { data: question.choices(), as: 'choice' }">
+          <a class="choice-item clearfix" style="color: #444444;" data-bind="attr: { 'id': 'choice' + choice.id()},
+          css: { image: choice.linkType() == 'image'},
+          click: $parent.clickChoice" role="button" href="javascript:;" id="choice23413243">
+            <div class="checkbox selected right" data-bind="css: {
+              radio: $parent.question.type() == 1,
+              selected: choice.isSelected(),
+              right: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isCorrect(),
+              wrong: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isSelected() &amp;&amp; !choice.isCorrect()
+            },attr:{'aria-label': (choice.isSelected() === true ? ' 已选中' : '')}" aria-label=" 已选中">
+              <i class="iconfont right"></i>
+              <i class="iconfont wrong"></i>
+            </div>
+           
+            <div class="option" data-bind="text: choice.option() + '.'">A.</div>
+            <div class="content-wrapper">
+              <div class="content">
+                <!-- ko if: choice.title() -->
+                <div class="text" data-bind="html: choice.title()" role="button">节水优先 </div>
+                <!-- /ko -->
+                <!-- ko if: choice.linkType() == "video" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "audio" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "image" --><!-- /ko -->
+              </div>
+            </div>
+          </a>
+        
+          <a class="choice-item clearfix" style="color: #444444;" data-bind="attr: { 'id': 'choice' + choice.id()},
+          css: { image: choice.linkType() == 'image'},
+          click: $parent.clickChoice" role="button" href="javascript:;" id="choice23413244">
+            <div class="checkbox selected right" data-bind="css: {
+              radio: $parent.question.type() == 1,
+              selected: choice.isSelected(),
+              right: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isCorrect(),
+              wrong: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isSelected() &amp;&amp; !choice.isCorrect()
+            },attr:{'aria-label': (choice.isSelected() === true ? ' 已选中' : '')}" aria-label=" 已选中">
+              <i class="iconfont right"></i>
+              <i class="iconfont wrong"></i>
+            </div>
+           
+            <div class="option" data-bind="text: choice.option() + '.'">B.</div>
+            <div class="content-wrapper">
+              <div class="content">
+                <!-- ko if: choice.title() -->
+                <div class="text" data-bind="html: choice.title()" role="button">空间均衡  </div>
+                <!-- /ko -->
+                <!-- ko if: choice.linkType() == "video" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "audio" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "image" --><!-- /ko -->
+              </div>
+            </div>
+          </a>
+        
+          <a class="choice-item clearfix" style="color: #444444;" data-bind="attr: { 'id': 'choice' + choice.id()},
+          css: { image: choice.linkType() == 'image'},
+          click: $parent.clickChoice" role="button" href="javascript:;" id="choice23413245">
+            <div class="checkbox selected right" data-bind="css: {
+              radio: $parent.question.type() == 1,
+              selected: choice.isSelected(),
+              right: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isCorrect(),
+              wrong: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isSelected() &amp;&amp; !choice.isCorrect()
+            },attr:{'aria-label': (choice.isSelected() === true ? ' 已选中' : '')}" aria-label=" 已选中">
+              <i class="iconfont right"></i>
+              <i class="iconfont wrong"></i>
+            </div>
+           
+            <div class="option" data-bind="text: choice.option() + '.'">C.</div>
+            <div class="content-wrapper">
+              <div class="content">
+                <!-- ko if: choice.title() -->
+                <div class="text" data-bind="html: choice.title()" role="button">系统治理  </div>
+                <!-- /ko -->
+                <!-- ko if: choice.linkType() == "video" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "audio" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "image" --><!-- /ko -->
+              </div>
+            </div>
+          </a>
+        
+          <a class="choice-item clearfix" style="color: #444444;" data-bind="attr: { 'id': 'choice' + choice.id()},
+          css: { image: choice.linkType() == 'image'},
+          click: $parent.clickChoice" role="button" href="javascript:;" id="choice23413246">
+            <div class="checkbox selected right" data-bind="css: {
+              radio: $parent.question.type() == 1,
+              selected: choice.isSelected(),
+              right: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isCorrect(),
+              wrong: $parent.question.questionShowAnswer &amp;&amp; $parent.question.status() &amp;&amp; choice.isSelected() &amp;&amp; !choice.isCorrect()
+            },attr:{'aria-label': (choice.isSelected() === true ? ' 已选中' : '')}" aria-label=" 已选中">
+              <i class="iconfont right"></i>
+              <i class="iconfont wrong"></i>
+            </div>
+           
+            <div class="option" data-bind="text: choice.option() + '.'">D.</div>
+            <div class="content-wrapper">
+              <div class="content">
+                <!-- ko if: choice.title() -->
+                <div class="text" data-bind="html: choice.title()" role="button">两手发力</div>
+                <!-- /ko -->
+                <!-- ko if: choice.linkType() == "video" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "audio" --><!-- /ko -->
+                <!-- ko if: choice.linkType() == "image" --><!-- /ko -->
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <!-- /ko -->
+      <!-- ko if: question.type() == 4 --><!-- /ko -->
+      <!-- ko if: question.type() == 5 --><!-- /ko -->
+      <!-- ko if: question.type() == 12 --><!-- /ko -->
+      <!-- ko if: question.type() == 24 --><!-- /ko -->
+    </div>
+    <div class="split-screen-resize-handler" data-bind="event: { touchstart: stopDefaultEvent, touchend: stopDefaultEvent, touchmove: stopDefaultEvent }, touchstartBubble: false, touchendBubble: false, touchmoveBubble: false">
+      <div class="line"></div>
+    </div>
+  </div>
+  <div class="question-operation-wrapper" data-bind="">
+    <!-- ko ifnot: question.status() --><!-- /ko -->
+    <!-- ko if: question.status() && question.questionManyChance --><!-- /ko -->
+  </div>
+  <!-- ko if: question.type() != 24 || (question.type() == 24 && question.correctReply) -->
+  <div class="question-analysis-wrapper show" data-bind="css: { show: question.showAnalysis() &amp;&amp; ( question.questionShowAnswer || (!question.questionShowAnswer &amp;&amp; question.correctReply()) ) }">
+    <!-- ko if: question.type() != 24 -->
+    <div class="answer-result-tip">
+      <div class="tip-icon">
+        <!-- ko if: question.isCorrect() -->
+        <!-- ko if: question.type() != 5 -->
+        <i class="iconfont correct"></i>
+        <!-- /ko -->
+        <!-- ko if: question.type() == 5 --><!-- /ko -->
+        <!-- /ko -->
+        <!-- ko if: question.questionManyChance && !question.isCorrect() --><!-- /ko -->
+        <!-- ko if: !question.questionManyChance && !question.isCorrect() --><!-- /ko -->
+      </div>
+      <div class="tip-text">
+        <div class="message" data-bind="text:
+          question.answerTipType() == 1 &amp;&amp; question.type() != 5 ? $root.i18nMessageText().answerRight :
+          question.answerTipType() == 1 &amp;&amp; question.type() == 5 ? $root.i18nMessageText().answered :
+          question.answerTipType() == 2 ? $root.i18nMessageText().oneChanceWrong :
+          question.answerTipType() == 3 ? $root.i18nMessageText().oneChancePartialWrong :
+          question.answerTipType() == 4 ? $root.i18nMessageText().manyChanceWrong :
+          question.answerTipType() == 5 ? $root.i18nMessageText().manyChancePartialWrong : ''">回答正确！</div>
+      </div>
+    </div>
+    <div class="circle-line"></div>
+    <!-- /ko -->
+    <div class="answer-result-text">
+      <!-- ko if: question.type() != 24 && question.questionShowAnswer -->
+      <div class="correct-answer-area">
+        <span data-bind="text: $root.i18nMessageText().correctAnswer">正确答案：</span>
+        <span data-bind="html: question.type() == 4 ? (question.correctAnswer() == true ? $root.i18nMessageText().right : $root.i18nMessageText().wrong) : (question.type() == 3 ? $component.arrayToString(question.correctAnswer()) : question.correctAnswer())">A,B,C,D</span>
+      </div>
+      <!-- ko if: question.type() != 24 && question.status() -->
+      <div class="user-answer-area">
+        <span data-bind="text: $root.i18nMessageText().yourAnswer">你的答案：</span>
+        <span data-bind="html: question.answer() &amp;&amp; question.answer().length == 0 ? $root.i18nMessageText().unanswered : (question.type() == 4 ? (question.answer() == true ? $root.i18nMessageText().right : $root.i18nMessageText().wrong) : (question.type() == 3 ? $component.arrayToString(question.answer()) : question.answer()))">A,B,C,D</span>
+      </div>
+      <!-- /ko -->
+      <!-- /ko -->
+      <!-- ko if: question.correctReply && question.type() != 11 && question.type() != 17 && question.type() != 23 -->
+      <div>
+        <span data-bind="text: $root.i18nMessageText().explanation">答案解析：</span>
+        <span data-bind="html: question.correctReply"></span>
+      </div>
+      <!-- /ko -->
+      <!-- ko if: question.type() == 11 || question.type() == 17 || question.type() == 23 --><!-- /ko -->
+    </div>
+  </div>
+  <!-- /ko -->
+</div></div>
+    
+    <div class="question-element-node" data-bind="component: {
+        name: &quot;question-element-component&quot;,
+        params: {
+          question: question,
+          questionViewModel: $parent,
+          questionManyChance: $component.questionManyChance,
+          questionShowAnswer: $root.questionShowAnswer
+        }
+      }"><div class="question-wrapper finished show-answer right" data-bind="attr: { 'id': 'question' + question.id() },
+  css: {
+    'finished': question.status(),
+    'show-answer': question.questionShowAnswer,
+    'right': question.isCorrect(),
+    'wrong': !question.isCorrect(),
+    'sub-question': question.parentQuestion,
+    'split-screen-mode': isSplitScreen() &amp;&amp; !mobileMode,
+    'mobile-split-screen-mode': isSplitScreen() &amp;&amp; mobileMode
+  }" id="question10009094">
+  <div class="split-screen-wrapper">
+    <!-- ko if: question.type() == 24 --><!-- /ko -->
+    <div class="question-title-wrapper" data-bind="css: { 'parent-question': question.type() == 24 }">
+      <div class="question-title-scroller">
+        <div class="question-title-text not-IE" data-bind="css: { 'not-IE': !isIE() }">
+          <span class="question-sort" data-bind="text: (question.sort())">9</span><span class="question-sort-dot">.</span>
+          <span class="question-type-tag" data-bind="text: $root.i18nMessageText()[questionType[question.type()]]">判断题</span>
+          <!-- ko if: question.type() == 17 --><!-- /ko -->
+          <!-- ko if: isTitleFile(question) --><!-- /ko -->
+          <span data-bind="attr: { 'class': 'question-title-html question-type-' + question.type() }, html: question.title()" class="question-title-html question-type-4">实现党和国家机构职能优化协同高效，优化要是要科学合理、权责一致，协同就是要有统有分、有主有次，高效就是要履职到位、流畅通顺。</span>
+        </div>
+        <!-- ko ifnot: isTitleFile(question) -->
+        <!-- ko foreach: { data: questionFiles, as: 'questionFile' } --><!-- /ko -->
+        <!-- /ko -->
+        <div class="custom-select" data-bind="if: activeSelect().choices"></div>
+      </div>
+      <div class="resize-handler" data-bind="event: { touchstart: stopDefaultEvent, touchend: stopDefaultEvent, touchmove: stopDefaultEvent }, touchstartBubble: false, touchendBubble: false, touchmoveBubble: false">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="question-body-wrapper">
+      <!-- ko if: question.type() == 1 || question.type() == 2 --><!-- /ko -->
+      <!-- ko if: question.type() == 4 -->
+      <div class="checking-type">
+        <div class="choice-btn right-btn selected" role="button" href="javascript:;" data-bind="attr: { 'aria-label': (question.answer() === true ? ' 已选中' : '')+'正确' }, click: clickCheckingBtn.bind($data, true), css: { selected: question.answer() === true}" aria-label=" 已选中正确">
+          <i class="iconfont"></i>
+          <div class="result">
+            <i class="iconfont right"></i>
+            <i class="iconfont wrong"></i>
+          </div>
+        </div>
+        <div class="choice-btn wrong-btn" href="javascript:;" role="button" data-bind="attr: { 'aria-label': (question.answer() === false ? ' 已选中' : '')+'错误' },click: clickCheckingBtn.bind($data, false), css: { selected: question.answer() === false}" aria-label="错误">
+          <i class="iconfont"></i>
+          <div class="result">
+            <i class="iconfont right"></i>
+            <i class="iconfont wrong"></i>
+          </div>
+        </div>
+      </div>
+      <!-- /ko -->
+      <!-- ko if: question.type() == 5 --><!-- /ko -->
+      <!-- ko if: question.type() == 12 --><!-- /ko -->
+      <!-- ko if: question.type() == 24 --><!-- /ko -->
+    </div>
+    <div class="split-screen-resize-handler" data-bind="event: { touchstart: stopDefaultEvent, touchend: stopDefaultEvent, touchmove: stopDefaultEvent }, touchstartBubble: false, touchendBubble: false, touchmoveBubble: false">
+      <div class="line"></div>
+    </div>
+  </div>
+  <div class="question-operation-wrapper" data-bind="">
+    <!-- ko ifnot: question.status() --><!-- /ko -->
+    <!-- ko if: question.status() && question.questionManyChance --><!-- /ko -->
+  </div>
+  <!-- ko if: question.type() != 24 || (question.type() == 24 && question.correctReply) -->
+  <div class="question-analysis-wrapper show" data-bind="css: { show: question.showAnalysis() &amp;&amp; ( question.questionShowAnswer || (!question.questionShowAnswer &amp;&amp; question.correctReply()) ) }">
+    <!-- ko if: question.type() != 24 -->
+    <div class="answer-result-tip">
+      <div class="tip-icon">
+        <!-- ko if: question.isCorrect() -->
+        <!-- ko if: question.type() != 5 -->
+        <i class="iconfont correct"></i>
+        <!-- /ko -->
+        <!-- ko if: question.type() == 5 --><!-- /ko -->
+        <!-- /ko -->
+        <!-- ko if: question.questionManyChance && !question.isCorrect() --><!-- /ko -->
+        <!-- ko if: !question.questionManyChance && !question.isCorrect() --><!-- /ko -->
+      </div>
+      <div class="tip-text">
+        <div class="message" data-bind="text:
+          question.answerTipType() == 1 &amp;&amp; question.type() != 5 ? $root.i18nMessageText().answerRight :
+          question.answerTipType() == 1 &amp;&amp; question.type() == 5 ? $root.i18nMessageText().answered :
+          question.answerTipType() == 2 ? $root.i18nMessageText().oneChanceWrong :
+          question.answerTipType() == 3 ? $root.i18nMessageText().oneChancePartialWrong :
+          question.answerTipType() == 4 ? $root.i18nMessageText().manyChanceWrong :
+          question.answerTipType() == 5 ? $root.i18nMessageText().manyChancePartialWrong : ''">回答正确！</div>
+      </div>
+    </div>
+    <div class="circle-line"></div>
+    <!-- /ko -->
+    <div class="answer-result-text">
+      <!-- ko if: question.type() != 24 && question.questionShowAnswer -->
+      <div class="correct-answer-area">
+        <span data-bind="text: $root.i18nMessageText().correctAnswer">正确答案：</span>
+        <span data-bind="html: question.type() == 4 ? (question.correctAnswer() == true ? $root.i18nMessageText().right : $root.i18nMessageText().wrong) : (question.type() == 3 ? $component.arrayToString(question.correctAnswer()) : question.correctAnswer())">正确</span>
+      </div>
+      <!-- ko if: question.type() != 24 && question.status() -->
+      <div class="user-answer-area">
+        <span data-bind="text: $root.i18nMessageText().yourAnswer">你的答案：</span>
+        <span data-bind="html: question.answer() &amp;&amp; question.answer().length == 0 ? $root.i18nMessageText().unanswered : (question.type() == 4 ? (question.answer() == true ? $root.i18nMessageText().right : $root.i18nMessageText().wrong) : (question.type() == 3 ? $component.arrayToString(question.answer()) : question.answer()))">正确</span>
+      </div>
+      <!-- /ko -->
+      <!-- /ko -->
+      <!-- ko if: question.correctReply && question.type() != 11 && question.type() != 17 && question.type() != 23 -->
+      <div>
+        <span data-bind="text: $root.i18nMessageText().explanation">答案解析：</span>
+        <span data-bind="html: question.correctReply"></span>
+      </div>
+      <!-- /ko -->
+      <!-- ko if: question.type() == 11 || question.type() == 17 || question.type() == 23 --><!-- /ko -->
+    </div>
+  </div>
+  <!-- /ko -->
+</div></div>
+    
+    <div class="question-element-node" data-bind="component: {
+        name: &quot;question-element-component&quot;,
+        params: {
+          question: question,
+          questionViewModel: $parent,
+          questionManyChance: $component.questionManyChance,
+          questionShowAnswer: $root.questionShowAnswer
+        }
+      }"><div class="question-wrapper finished show-answer right" data-bind="attr: { 'id': 'question' + question.id() },
+  css: {
+    'finished': question.status(),
+    'show-answer': question.questionShowAnswer,
+    'right': question.isCorrect(),
+    'wrong': !question.isCorrect(),
+    'sub-question': question.parentQuestion,
+    'split-screen-mode': isSplitScreen() &amp;&amp; !mobileMode,
+    'mobile-split-screen-mode': isSplitScreen() &amp;&amp; mobileMode
+  }" id="question10009095">
+  <div class="split-screen-wrapper">
+    <!-- ko if: question.type() == 24 --><!-- /ko -->
+    <div class="question-title-wrapper" data-bind="css: { 'parent-question': question.type() == 24 }">
+      <div class="question-title-scroller">
+        <div class="question-title-text not-IE" data-bind="css: { 'not-IE': !isIE() }">
+          <span class="question-sort" data-bind="text: (question.sort())">10</span><span class="question-sort-dot">.</span>
+          <span class="question-type-tag" data-bind="text: $root.i18nMessageText()[questionType[question.type()]]">判断题</span>
+          <!-- ko if: question.type() == 17 --><!-- /ko -->
+          <!-- ko if: isTitleFile(question) --><!-- /ko -->
+          <span data-bind="attr: { 'class': 'question-title-html question-type-' + question.type() }, html: question.title()" class="question-title-html question-type-4">乡村振兴是包括产业振兴、人才振兴、文化振兴、生态振兴、组织振兴的全面振兴。</span>
+        </div>
+        <!-- ko ifnot: isTitleFile(question) -->
+        <!-- ko foreach: { data: questionFiles, as: 'questionFile' } --><!-- /ko -->
+        <!-- /ko -->
+        <div class="custom-select" data-bind="if: activeSelect().choices"></div>
+      </div>
+      <div class="resize-handler" data-bind="event: { touchstart: stopDefaultEvent, touchend: stopDefaultEvent, touchmove: stopDefaultEvent }, touchstartBubble: false, touchendBubble: false, touchmoveBubble: false">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="question-body-wrapper">
+      <!-- ko if: question.type() == 1 || question.type() == 2 --><!-- /ko -->
+      <!-- ko if: question.type() == 4 -->
+      <div class="checking-type">
+        <div class="choice-btn right-btn selected" role="button" href="javascript:;" data-bind="attr: { 'aria-label': (question.answer() === true ? ' 已选中' : '')+'正确' }, click: clickCheckingBtn.bind($data, true), css: { selected: question.answer() === true}" aria-label=" 已选中正确">
+          <i class="iconfont"></i>
+          <div class="result">
+            <i class="iconfont right"></i>
+            <i class="iconfont wrong"></i>
+          </div>
+        </div>
+        <div class="choice-btn wrong-btn" href="javascript:;" role="button" data-bind="attr: { 'aria-label': (question.answer() === false ? ' 已选中' : '')+'错误' },click: clickCheckingBtn.bind($data, false), css: { selected: question.answer() === false}" aria-label="错误">
+          <i class="iconfont"></i>
+          <div class="result">
+            <i class="iconfont right"></i>
+            <i class="iconfont wrong"></i>
+          </div>
+        </div>
+      </div>
+      <!-- /ko -->
+      <!-- ko if: question.type() == 5 --><!-- /ko -->
+      <!-- ko if: question.type() == 12 --><!-- /ko -->
+      <!-- ko if: question.type() == 24 --><!-- /ko -->
+    </div>
+    <div class="split-screen-resize-handler" data-bind="event: { touchstart: stopDefaultEvent, touchend: stopDefaultEvent, touchmove: stopDefaultEvent }, touchstartBubble: false, touchendBubble: false, touchmoveBubble: false">
+      <div class="line"></div>
+    </div>
+  </div>
+  <div class="question-operation-wrapper" data-bind="">
+    <!-- ko ifnot: question.status() --><!-- /ko -->
+    <!-- ko if: question.status() && question.questionManyChance --><!-- /ko -->
+  </div>
+  <!-- ko if: question.type() != 24 || (question.type() == 24 && question.correctReply) -->
+  <div class="question-analysis-wrapper show" data-bind="css: { show: question.showAnalysis() &amp;&amp; ( question.questionShowAnswer || (!question.questionShowAnswer &amp;&amp; question.correctReply()) ) }">
+    <!-- ko if: question.type() != 24 -->
+    <div class="answer-result-tip">
+      <div class="tip-icon">
+        <!-- ko if: question.isCorrect() -->
+        <!-- ko if: question.type() != 5 -->
+        <i class="iconfont correct"></i>
+        <!-- /ko -->
+        <!-- ko if: question.type() == 5 --><!-- /ko -->
+        <!-- /ko -->
+        <!-- ko if: question.questionManyChance && !question.isCorrect() --><!-- /ko -->
+        <!-- ko if: !question.questionManyChance && !question.isCorrect() --><!-- /ko -->
+      </div>
+      <div class="tip-text">
+        <div class="message" data-bind="text:
+          question.answerTipType() == 1 &amp;&amp; question.type() != 5 ? $root.i18nMessageText().answerRight :
+          question.answerTipType() == 1 &amp;&amp; question.type() == 5 ? $root.i18nMessageText().answered :
+          question.answerTipType() == 2 ? $root.i18nMessageText().oneChanceWrong :
+          question.answerTipType() == 3 ? $root.i18nMessageText().oneChancePartialWrong :
+          question.answerTipType() == 4 ? $root.i18nMessageText().manyChanceWrong :
+          question.answerTipType() == 5 ? $root.i18nMessageText().manyChancePartialWrong : ''">回答正确！</div>
+      </div>
+    </div>
+    <div class="circle-line"></div>
+    <!-- /ko -->
+    <div class="answer-result-text">
+      <!-- ko if: question.type() != 24 && question.questionShowAnswer -->
+      <div class="correct-answer-area">
+        <span data-bind="text: $root.i18nMessageText().correctAnswer">正确答案：</span>
+        <span data-bind="html: question.type() == 4 ? (question.correctAnswer() == true ? $root.i18nMessageText().right : $root.i18nMessageText().wrong) : (question.type() == 3 ? $component.arrayToString(question.correctAnswer()) : question.correctAnswer())">正确</span>
+      </div>
+      <!-- ko if: question.type() != 24 && question.status() -->
+      <div class="user-answer-area">
+        <span data-bind="text: $root.i18nMessageText().yourAnswer">你的答案：</span>
+        <span data-bind="html: question.answer() &amp;&amp; question.answer().length == 0 ? $root.i18nMessageText().unanswered : (question.type() == 4 ? (question.answer() == true ? $root.i18nMessageText().right : $root.i18nMessageText().wrong) : (question.type() == 3 ? $component.arrayToString(question.answer()) : question.answer()))">正确</span>
+      </div>
+      <!-- /ko -->
+      <!-- /ko -->
+      <!-- ko if: question.correctReply && question.type() != 11 && question.type() != 17 && question.type() != 23 -->
+      <div>
+        <span data-bind="text: $root.i18nMessageText().explanation">答案解析：</span>
+        <span data-bind="html: question.correctReply"></span>
+      </div>
+      <!-- /ko -->
+      <!-- ko if: question.type() == 11 || question.type() == 17 || question.type() == 23 --><!-- /ko -->
+    </div>
+  </div>
+  <!-- /ko -->
+</div></div>
+    <!-- /ko -->
+  </div>
+  <div class="question-operation-area">
+    <!-- ko if: questionLimitChance() --><!-- /ko -->
+    <!-- ko ifnot: $component.pageElement.isQuestionComplete() --><!-- /ko -->
+    <!-- ko if: $component.pageElement.isQuestionComplete() -->
+    <!-- ko if: (!questionLimitChance() && $component.questionManyChance) || (questionLimitChance() && questionLimitChance() - pageElement.usedSubmitChance() > 0) --><!-- /ko -->
+    <!-- ko ifnot: (!questionLimitChance() && $component.questionManyChance) || (questionLimitChance() && questionLimitChance() - pageElement.usedSubmitChance() > 0) -->
+    <button type="button" class="btn-hollow btn-redo disable" data-bind="text: $root.i18nMessageText().redo">重做</button>
+    <!-- /ko -->
+    <!-- ko if: $component.isVideoQuestion --><!-- /ko -->
+    <!-- /ko -->
+  </div>
+  <div class="video-question-end">
+    <div class="video-question-end-tip">
+      <img src="./img/videoQuestionComplete.png">
+      <div data-bind="text: $root.i18nMessageText().finishVideoQuestion">答题结束，3s后视频继续播放</div>
+    </div>
+  </div>
+  <!-- ko if: $component.showLimitTimeMask() && !$component.pageElement.isQuestionComplete() --><!-- /ko -->
+</div></div>
+    <!-- /ko -->
+    <!-- ko if: pageElement.type() == 16 --><!-- /ko -->
+    <!-- ko if: pageElement.type() == 17 --><!-- /ko -->
+    <!-- ko if: pageElement.type() == 13 --><!-- /ko -->
+    <!-- ko if: pageElement.type() == 10 --><!-- /ko -->
+  </div>
+  <!-- /ko -->
+  <!-- ko if: page.pageElements().length == 0 --><!-- /ko -->
+</div></div>
+          <!-- /ko -->
+          <!-- ko ifnot: $root.currentPage().isLoaded() --><!-- /ko -->
+          <!-- /ko -->
+          <!-- /ko -->
+          <!-- /ko -->
+        <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__scrollbar-y-rail" style="top: 0px; right: 0px; height: 456px;"><div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 50px;"></div></div></div>

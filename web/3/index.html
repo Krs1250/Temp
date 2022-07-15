@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ReadImage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <input type="file" id="filepicker" name="fileList" webkitdirectory multiple />
+    <ul id="listing"></ul>
+    <div id="pic"></div>
+    <script type="text/javascript">
+        document.getElementById("filepicker").addEventListener("change", function (event) {
+            let output = document.getElementById("listing");
+            let files = event.target.files;
+            for (let i = 0; i < files.length; i++) {
+                let item = document.createElement("li");
+                item.innerHTML = files[i].webkitRelativePath;
+                output.appendChild(item);
+                // imgurl='<img src=' + item.innerHTML +'" />';
+                // document.body.innerHTML = imgurl;
+            };
+        }, false);
+    </script>
+</body>

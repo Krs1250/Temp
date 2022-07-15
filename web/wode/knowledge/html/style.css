@@ -1,0 +1,79 @@
+i {
+    font-size:14px;
+    font-style:normal;
+    font-weight: 400;
+    color: gray;
+}
+
+code {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+a {
+    text-decoration: none;
+    color: gray;
+    font-weight: 800;
+}
+
+a:hover {
+    color: blueviolet;
+}
+
+.classification {
+    border-bottom: 3px solid slategrey;
+}
+
+#main pre {
+    color: beige;
+    display: inline-block;
+    background-color: grey;
+    border-radius: 5px;
+}
+
+#main table tr th {
+    text-align: center;
+    border: 1px solid grey;
+}
+
+#main table tr td {
+    border-bottom: 1px dashed grey;
+}
+
+#nav {
+    position: fixed;
+    width: 20%;
+    border: 1px solid grey;
+    right: 0;
+    margin-right: 2.5%;
+    padding-left: 1em;
+}
+
+#nav ul {
+    /* text-align: center; */
+    font-size: 12pt;
+    list-style-type: none;
+    text-indent: -2em;
+    
+}
+
+#nav ul li {
+    /* font-size: 12px; */
+    text-indent: -1.5em;
+}
+
+#main {
+    width: 60%;
+    height:auto;
+    border: 1px solid grey;
+    margin-left: 10%;
+    margin-bottom: 2em;
+    padding:0 1em;
+    
+}
+
+#footer a {
+    display: inline-block;
+    position: absolute;
+    right: 10%;
+}

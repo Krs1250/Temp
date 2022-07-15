@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <nav id="nav">
+        <ul>
+            <a href="#">HTML 元素参考</a>
+            <li><a href="#a">主根元素</a></li>
+            <li><a href="#b">分区根元素</a></li>
+            <li><a href="#c">文档元数据</a></li>
+            <li><a href="#d">内容分区</a></li>
+            <li><a href="#e">文本内容</a></li>
+            <li><a href="#f">内联文本语义</a></li>
+            <li><a href="#g">图片和多媒体</a></li>
+            <li><a href="#h">内嵌内容</a></li>
+            <li><a href="#i">SVG 和 MathML</a></li>
+            <li><a href="#j">脚本</a></li>
+            <li><a href="#k">编辑标识</a></li>
+            <li><a href="#l">表格内容</a></li>
+            <li><a href="#m">表单</a></li>
+            <li><a href="#n">交互元素</a></li>
+            <li><a href="#o">Web 组件</a></li>
+            <li><a href="#p">过时的和弃用的元素</a></li>
+        </ul>
+    </nav>
+    <main id="main">
+        <h3>HTML 元素参考</h3>
+
+        <div id="a" class="classification">
+            <h4 id="zgys">主根元素</h4>
+            <table>
+                <tr>
+                    <th>元素</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;html&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;html&gt;</pre> 元素
+                        </b> 表示一个 HTML 文档的根（顶级元素），所以它也被称为根元素。所有其他元素必须是此元素的后代。</td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="b" class="classification">
+            <h4 id="fqgys">分区根元素</h4>
+            <table>
+                <tr>
+                    <th>元素</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;head&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;head&gt;</pre> 元素
+                        </b> 规定文档相关的配置信息（元数据），包括文档的标题，引用的文档样式和脚本等。</td>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;body&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;body&gt;</pre> 元素
+                        </b>表示文档的内容。document.body 属性提供了可以轻松访问文档的 body 元素的脚本。</td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="c" class="classification">
+            <h4 id="wdysj">文档元数据</h4>
+            <p>元数据（Metadata）含有页面的相关信息，包括样式、脚本及数据，能帮助一些软件（例如 搜索引擎 (en-US)、浏览器
+                等等）更好地运用和渲染页面。对于样式和脚本的元数据，可以直接在网页里定义，也可以链接到包含相关信息的外部文件。</p>
+            <table>
+                <tr>
+                    <th>元素</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;base&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;base&gt;</pre> 元素
+                        </b> 指定用于一个文档中包含的所有相对 URL 的根 URL。一份中只能有一个&lt;base&gt;元素。</td>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;link&gt;</a></td>
+                    <td><b>HTML 外部资源链接元素 (
+                            <pre>&lt;link&gt;</pre>)
+                        </b> 规定了当前文档与外部资源的关系。该元素最常用于链接样式表，此外也可以被用来创建站点图标 (比如 PC 端的 “favicon” 图标和移动设备上用以显示在主屏幕的图标) 。</td>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;meta&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;meta&gt;</pre> 元素
+                        </b> 表示那些不能由其它 HTML 元相关（meta-related）元素（base、link, script、style 或 title）之一表示的任何Metadata信息。</td>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;style&gt;</a></td>
+                    <td><b>HTML 的
+                            <pre>&lt;style&gt;</pre> 元素
+                        </b> 包含文档的样式信息或者文档的部分内容。默认情况下，该标签的样式信息通常是CSS的格式。</td>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;title&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;title&gt;</pre> 元素
+                        </b> 定义文档的标题，显示在Browser的标题栏或标签页上。它只应该包含文本，若是包含有标签，则它包含的任何标签都将被忽略。</td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="d" class="classification">
+            <h4 id="fqnr">内容分区</h4>
+            <p>内容分区元素允许你将文档内容从逻辑上进行组织划分。使用包括页眉（header）、页脚（footer）、导航（nav）和标题（h1~h6）等分区元素，来为页面内容创建明确的大纲，以便区分各个章节的内容。</p>
+            <table>
+                <tr>
+                    <th>元素</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;address&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;address&gt;</pre> 元素
+                        </b> 表示其中的 HTML 提供了某个人或某个组织（等等）的联系信息。</td>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;article&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;article&gt;</pre> 元素
+                        </b>
+                        表示文档、页面、应用或网站中的独立结构，其意在成为可独立分配的或可复用的结构，如在发布中，它可能是论坛帖子、杂志或新闻文章、博客、用户提交的评论、交互式组件，或者其他独立的内容项目。​​
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;aside&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;aside&gt;</pre> 元素
+                        </b> 表示一个和其余页面内容几乎无关的部分，被认为是独立于该内容的一部分并且可以被单独的拆分出来而不会使整体受影响。其通常表现为侧边栏或者标注框（call-out boxes）。</td>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;footer&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;footer&gt;</pre> 元素
+                        </b> 表示最近一个章节内容或者根节点（sectioning root ）元素的页脚。一个页脚通常包含该章节作者、版权数据或者与文档相关的链接等信息。</td>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;header&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;header&gt;</pre> 元素
+                        </b> 用于展示介绍性内容，通常包含一组介绍性的或是辅助导航的实用元素。它可能包含一些标题元素，但也可能包含其他元素，比如 Logo、搜索框、作者名称，等等。</td>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;main&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;main&gt;</pre> 元素
+                        </b> 呈现了文档的 body 或应用的主体部分。主体部分由与文档直接相关，或者扩展于文档的中心主题、应用的主要功能部分的内容组成。</td>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;nav&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;nav&gt;</pre> 元素
+                        </b> 表示页面的一部分，其目的是在当前文档或其他文档中提供导航链接。导航部分的常见示例是菜单，目录和索引。</td>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;section&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;section&gt;</pre> 元素
+                        </b> 表示一个包含在 HTML 文档中的独立部分，它没有更具体的语义元素来表示，一般来说会有包含一个标题。</td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="e" class="classification">
+            <h4>文本内容</h4>
+            <p>使用 HTML 文本内容元素来组织在开标签
+            <pre>&lt;body&gt;</pre> 和闭标签
+            <pre>&lt;/body&gt;</pre> 里的块或章节的内容。这些元素能标识内容的宗旨或结构，而这对于 accessibility 和 SEO 很重要。</p>
+            <table>
+                <tr>
+                    <th>元素</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;blockquote&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;blockquote&gt;</pre> 元素
+                        </b>（或者 HTML 块级引用元素），代表其中的文字是引用内容。通常在渲染时，这部分的内容会有一定的缩进（注 中说明了如何更改）。若引文来源于网络，则可以将原内容的出处 URL 地址设置到
+                        cite 特性上，若要以文本的形式告知读者引文的出处时，可以通过
+                        <pre>&lt;cite&gt;</pre> 元素。
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;dd&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;dd&gt;</pre> 元素
+                        </b>（HTML 描述元素）用来指明一个描述列表 (
+                        <pre>dl</pre>) 元素中一个术语的描述。这个元素只能作为描述列表元素的子元素出现，并且必须跟着一个
+                        <pre>&lt;dt&gt;</pre> 元素。
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;div&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;div&gt;</pre> 元素
+                        </b> (或 HTML 文档分区元素) 是一个通用型的流内容容器，在不使用CSS的情况下，其对内容或布局没有任何影响。</td>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;dl&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;dl&gt;</pre> 元素
+                        </b> （或 HTML 描述列表元素）是一个包含术语定义以及描述的列表，通常用于展示词汇表或者元数据 (键 - 值对列表)。</b></td>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;dt&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;dt&gt;</pre> 元素
+                        </b> &nbsp;（或&nbsp;<em>HTML 术语定义元素</em>）用于在一个定义
+                        列表中声明一个术语。该元素仅能作为&nbsp;
+                        <pre>dl</pre> 的子元素出现。通常在该元素后面会跟着&nbsp;
+                        <pre>dd</pre> 元素， 然而，多个连续出现的&nbsp;
+                        <pre>&lt;dt&gt;</pre>&nbsp;元素都将由出现在它们后面的第一个&nbsp;
+                        <pre>&lt;dd&gt;</pre> 元素定义。&nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;figcaption&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;figcaption&gt;</pre>&nbsp;元素
+                        </b> &nbsp;是与其相关联的图片的说明/标题，用？于描
+                        述其父节点&nbsp;
+                        <pre>figure</pre> 元素里的其他数据。这意味着&nbsp;
+                        <pre>&lt;figcaption&gt;</pre>&nbsp;在
+                        <pre>figure</pre> 块里是第一个或最后一个。同时&nbsp;HTML Figcaption 元素是可选的；如果没有该元素，这个父节
+                        点的图片只是会没有说明/标题。
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;figure&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;figure&gt;</pre> 元素
+                        </b> 代表一段独立的内容，经常与说明（caption）
+                        <pre>figcaption</pre>&nbsp;配合使用，并且作为一个独立的引用单元。当它属于主内容流（main flow）时，它的位置独立于主体。
+                        这个标签经常是在主文中引用的图片，插图，表格，代码段等等，当这部分转移到附录中或者其他页面时不会影响到主
+                        体。
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;hr&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;hr&gt;</pre>&nbsp; 元素
+                        </b> 表示段落级元素之间的主题转换（例如，一个故事中的场景
+                        的改变，或一个章节的主题的改变）。</td>
+                </tr>
+                <tr>
+                    <td><a href="#">
+                            &lt;h1&gt;<small>(en-US)</small>
+                        </a>, <br />
+                        <a href="#">
+                            &lt;h2&gt; <small>(en-US)</small>
+                        </a>,<br />
+                        <a href="#">
+                            &lt;h3&gt; <small>(en-US)</small>
+                        </a>, <br />
+                        <a href="#">
+                            &lt;h4&gt; <small>(en-US)</small>
+                        </a>, <br />
+                        <a href="#">
+                            &lt;h5&gt; <small>(en-US)</small>
+                        </a>, <br />
+                        <a href="#">
+                            &lt;h6&gt; <small>(en-US)</small>
+                        </a>
+                    </td>
+                    <td><b>HTML
+                            <pre>&lt;h1&gt;</pre>–
+                            <pre>&lt;h6&gt;</pre> 标题 (Heading) 元素
+                        </b>呈现了六个不同的级别的
+                        标题，
+                        <pre>&lt;h1&gt;</pre> 级别最高，而
+                        <pre>&lt;h6&gt;</pre> 级别最低。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;li&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;li&gt;</pre>&nbsp;元素
+                        </b> &nbsp;（或称&nbsp;<em>HTML 列表条目元素）</em>&nbsp;用
+                        于表示列表里的条目。它必须包含在一个父元素里：一个有序列表 (
+                        <pre>ol</pre>)，一个无序列表 (
+                        <pre>ul</pre>)
+                        ，或者一个菜单 (
+                        <pre>menu</pre>)。在菜单或者无序列表里，列表条目通常用点排列显示；在有序列表里，列表条目
+                        通常在左边显示按升序排列的计数，例如数字或者字母。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;menu&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;menu&gt;</pre> 元素
+                        </b> 呈现了一组用户可执行或激活的命令。这既包含了可能出现在屏
+                        幕顶端的列表菜单，也包含了那些隐藏在按钮之下、当点击按钮后显示出来的文本菜单。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;ol&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;ol&gt;</pre> 元素
+                        </b> 表示有序列表，通常渲染为一个带编号的列表。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;p&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;p&gt;</pre> 元素
+                        </b> （或者说 HTML 段落元素）表示文本的一个段落。该元素通常表现为一整块
+                        与相邻文本分离的文本，或以垂直的空白隔离或以首行缩进。另外，&lt;p&gt;&nbsp;是<a href="#">块级元素</a>。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;pre&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;pre&gt;</pre>元素
+                        </b> 表示预定义格式文本。在该元素中的文本通常按照原文件中的编排，以等宽字
+                        体的形式展现出来，文本中的空白符（比如空格和换行符）都会显示出来。(紧跟在 &lt;pre&gt; 开始标签后的换行符
+                        也会被省略)</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;ul&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;ul&gt;</pre> 元素
+                        </b> （或称 HTML 无序列表元素）表示一个内可含多个元素的无序列表
+                        或项目符号列表。</td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="f" class="classification">
+            <h4>内联文本语义</h4>
+            <p>使用 HTML 内联文本语义（Inline text semantics）定义一个单词、一行内容，或任意文字的语义、结构或样式。</p>
+            <table>
+                <tr>
+                    <th>元素</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;a&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;a&gt;</pre> 元素
+                        </b> （或称锚元素）可以通过<a href="#">它的
+                            <pre>href</pre> 属性
+                        </a>创建通向其他网页、文件、同一页面内的位置、电子邮件地址或任何其他 URL 的超链接。
+                        <pre>&lt;a&gt;</pre> 中
+                        的内容<b>应该</b> 应该指明链接的意图。如果存在<a href="#">
+                            <pre>href</pre> 属性
+                        </a>，当
+                        <pre>&lt;a&gt;</pre> 元素聚焦时按下回车键就会激活它。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;abbr&gt;</a></td>
+                    <td><b>HTML 缩写元素</b> （<b>
+                            <pre>&lt;abbr&gt;</pre>
+                        </b> ）用于代表缩写，并且可以通过可选的
+                        <pre>title</pre> 属性提供完整的描述。若使用
+                        <pre>title</pre> 属性，则它必须且仅可包含完整的描述内容。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;b&gt;</a></td>
+                    <td><b>HTML 提醒注意（Bring Attention To）元素（
+                            <pre>&lt;b&gt;</pre>）
+                        </b> 用于吸引读者的注意到该元素
+                        的内容上（如果没有另加特别强调）。这个元素过去被认为是<b>粗体（Boldface）元素</b> ，并且大多数浏览器仍然
+                        将文字显示为粗体。尽管如此，你不应将
+                        <pre>&lt;b&gt;</pre> 元素用于显示粗体文字；替代方案是使用 CSS
+                        <pre>font-weight</pre> 属性来创建粗体文字。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;bdi&gt;</a></td>
+                    <td><br>
+                        <b>HTML&nbsp;</b> 双向隔离元素 (<b>&nbsp;
+                            <pre>&lt;bdi&gt;</pre>
+                        </b> ) 告诉浏览器的双向算法将其包含的文
+                        本与周围的文本隔离，当网站动态插入一些文本且不知道所插入文本的方向性时，此功能特别有用。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;bdo&gt;</a></td>
+                    <td>HTML 双向文本替代元素 (<b>
+                            <pre>&lt;bdo&gt;</pre>
+                        </b> ) 改写了文本的方向性，使文本以不同的方向渲染
+                        呈现出来 (override 可以翻译很多意思，编程语言中多用覆盖，重载；这里采用了 Google 的整体翻译，取替代替换改
+                        写之意)</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;br&gt;</a></td>
+                    <td><b>HTML &lt;br&gt; 元素</b> 在文本中生成一个换行（回车）符号。此元素在写诗和地址时很有用，这些地方
+                        的换行都非常重要。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;cite&gt;</a></td>
+                    <td><em>HTML 引用（ Citation）标签</em>&nbsp;(<b>&lt;cite&gt;</b> ) 表示一个作品的引用，且必须包含作品
+                        的标题。这个引用可能是一个根据适当的上下文约定关联引用的元数据的缩写。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;pre&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;pre&gt;</pre> 元素
+                        </b> 呈现一段计算机代码。默认情况下，它以浏览器的默认等宽字体显
+                        示。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;data&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;data&gt;</pre> 元素
+                        </b> 将一个指定内容和机器可读的翻译联系在一起。但是，如果内容
+                        是与时间或者日期相关的，则一定要使用
+                        <pre>time</pre>。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;dfn&gt;</a></td>
+                    <td><em>HTML 定义元素</em>&nbsp;(<b>&lt;dfn&gt;</b> ) 表示术语的一个定义。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;em&gt;</a></td>
+                    <td><b>HTML 着重元素</b> &nbsp;(
+                        <pre><b>&lt;em&gt;</b> </pre>) 标记出需要用户着重阅读的内容，&nbsp;
+                        <pre>&lt;em&gt;</pre>&nbsp;元素是可以嵌套的，嵌套层次越深，则其包含的内容被认定为越需要着重阅读。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;i&gt;</a></td>
+                    <td><b>HTML 元素
+                            <pre>&lt;i&gt;</pre>
+                        </b> 用于表现因某些原因需要区分普通文本的一系列文本。例如技术术
+                        语、外文短语或是小说中人物的思想活动等，它的内容通常以斜体显示。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;kbd&gt;</a></td>
+                    <td>HTML 键盘输入元素 (<b>&lt;kbd&gt;</b> ) 用于表示用户输入，它将产生一个行内元素，以浏览器的默认 monospace 字体显示。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;mark&gt;</a></td>
+                    <td>HTML 标记文本元素 (&lt; Mark &gt;) 表示为引用或符号目的而标记或突出显示的文本，这是由于标记的段落
+                        在封闭上下文中的相关性或重要性造成的。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;q&gt;</a></td>
+                    <td><em>HTML 引用标签</em> (<b>&lt;q&gt;</b> ) 表示一个封闭的并且是短的行内引用的文本。这个标签是用来
+                        引用短的文本，所以请不要引入换行符; 对于长的文本的引用请使用
+                        <pre>blockquote</pre> 替代。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;rp&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;rp&gt;</pre>&nbsp;元素
+                        </b> 用于为那些不能使用
+                        <pre>ruby</pre> 元素展示 ruby 注解
+                        的浏览器，提供随后的圆括号。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;rt&gt;</a></td>
+                    <td><b>HTML Ruby 文本 (
+                            <pre>&lt;rt&gt;</pre>) 元素
+                        </b> 包含字符的发音，字符在 ruby 注解中出现，它用于
+                        描述东亚字符的发音。这个元素始终在
+                        <pre>ruby</pre> 元素中使用。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;ruby&gt;</a></td>
+                    <td><b>HTML&nbsp;
+                            <pre>&lt;ruby&gt;</pre>&nbsp;元素
+                        </b> 被用来展示东亚文字注音或字符注释。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;s&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;s&gt;</pre>&nbsp;元素&nbsp;
+                        </b> 使用删除线来渲染文本。使用&nbsp;
+                        <pre>&lt;s&gt;</pre>&nbsp;元素来表示不再相关，或者不再准确的事情。但是当表示文档编辑时，不提倡使用&nbsp;
+                        <pre>&lt;s&gt;</pre>&nbsp;；为此，提倡使用&nbsp;
+                        <pre>del</pre> 和&nbsp;
+                        <pre>ins</pre> 元素。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;samp&gt;</a></td>
+                    <td>&lt;samp&gt; 元素用于标识计算机程序输出，通常使用浏览器缺省的 monotype 字体（例如 Lucida Console）
+                        。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;small&gt;</a></td>
+                    <td>HTML 中的&lt;small&gt;元素將使文本的字体变小一号。(例如从大变成中等，从中等变成小，从小变成超小)。
+                        在 HTML5 中，除了它的样式含义，这个元素被重新定义为表示边注释和附属细则，包括版权和法律文本。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;span&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;span&gt;</pre>&nbsp;
+                        </b> 元素是短语内容的通用行内容器，并没有任何特殊语义。可以使
+                        用它来编组元素以达到某种样式意图（通过使用类或者 Id 属性），或者这些元素有着共同的属性，比如<b>lang</b>
+                        。应该在没有其他合适的语义元素时才使用它。
+                        <pre>&lt;span&gt;</pre>&nbsp;与&nbsp;
+                        <pre>div</pre> 元素很相似
+                        ，但&nbsp;
+                        <pre>div</pre> 是一个&nbsp;<a href="#">块元素</a> 而
+                        <pre>&lt;span&gt;</pre> 则是 <a href="#">
+                            行内元素 </a>.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;b&gt;</a></td>
+                    <td>Strong 元素 (
+                        <pre>&lt;b&gt;</pre>) 表示文本十分重要，一般用粗体显示。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;sub&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;sub&gt;</pre>&nbsp;元素
+                        </b> 定义了一个文本区域，出于排版的原因，与主要的文本相比
+                        ，应该展示得更低并且更小。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;sup&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;sup&gt;</pre>&nbsp;元素
+                        </b> 定义了一个文本区域，出于排版的原因，与主要的文本相比
+                        ，应该展示得更高并且更小。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;time&gt;</a></td>
+                    <td>&nbsp;HTML <em>time</em> 标签 (
+                        <pre>&lt;time&gt;</pre>) 用来表示 24 小时制时间或者<a class="external" href="#"
+                            rel=" noopener">公历日期</a>，若表示日期则也可包含时间和时区。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;u&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;u&gt;</pre>&nbsp;元素（表意不清标注元素）
+                        </b> 表示一个需要标注为非文本化（non-textual）的内联文本域。默认情况下渲染为一个实线下划线，可以用 CSS 替换。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;var&gt;</a></td>
+                    <td><b>&lt;var&gt; 标签</b> 表示变量的名称，或者由用户提供的值。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;wbr&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;wbr&gt;</pre>&nbsp;元素 &nbsp;
+                        </b> — 一个文本中的位置，其中浏览器可以选择来换行，
+                        虽然它的换行规则可能不会在这里换行。</td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="g" class="classification">
+            <h4>图片和多媒体</h4>
+            <p>HTML 支持各种多媒体资源，例如图像、音频和视频。</p>
+            <table>
+                <tr>
+
+                    <th>元素</th>
+                    <th>描述</th>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;area&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;area&gt;</pre>元素
+                        </b> 在图片上定义一个热点区域，可以关联一个超链接。
+                        <pre>&lt;area&gt;</pre>元素仅在
+                        <pre>&lt;map&gt;</pre>元素内
+                        部使用。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;audio&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;audio&gt;</pre>&nbsp;元素
+                        </b> 用于在文档中嵌入音频内容。&nbsp;
+                        <pre>&lt;audio&gt;</pre>&nbsp;元素可以包含一个
+                        或多个音频资源， 这些音频资源可以使用&nbsp;
+                        <pre>src</pre>&nbsp;属性或者
+                        <pre>source</pre> 元素来进行描述：浏览器将会选择最合适的一个来
+                        使用。也可以使用
+                        <pre>MediaStream</pre> 将这个元素用于流式媒体。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;img&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;img&gt;</pre> 元素
+                        </b> 将一份图像嵌入文档。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;map&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;map&gt;</pre> 属性与
+                            <pre>&lt;area&gt;</pre> 属性
+                        </b> 一起使用来定义一个图像映射 (一个可点击的链接区域).</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;track&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;track&gt;</pre> 元素
+                        </b> 被当作媒体元素—
+                        <pre>&lt;audio&gt;</pre> 和
+                        <pre>&lt;video&gt;</pre>的子元素来使用。它允许指定时序文
+                        本字幕（或者基于时间的数据），例如自动处理字幕。字幕格式有 <a href="#">WebVTT 格式</a>（
+                        <pre>.vtt</pre>格式文件）— Web 视频文本字幕格
+                        式，以及指<a href="#" class="external" rel=" noopener">时序文本标记语言（TTML）</a>格式。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;video&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;video&gt;</pre> 元素
+                        </b> 用于在 HTML 或者 XHTML 文档中嵌入媒体播放器，用于支持文档内的视频播放。你也可以将&nbsp;
+                        <pre>&lt;video&gt;</pre>&nbsp; 标签用于音频内容，但是
+                        <pre>&lt;audio&gt;</pre> 元素可能在用户体验上更合适。
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="h" class="classification">
+            <h4>内嵌内容</h4>
+            <p></p>
+            <table>
+                <tr>
+
+                    <th>元素</th>
+                    <th>描述</th>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;embed&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;embed&gt;</pre> 元素
+                        </b> 将外部内容嵌入文档中的指定位置。此内容由外部应用程序或其他交互式内容源（如浏览器插件
+                        ）提供。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;iframe&gt;</a></td>
+                    <td><b>HTML 内联框架元素</b> (
+                        <pre>&lt;iframe&gt;</pre>) 表示嵌套的browsing context。它能够将另一个 HTML 页面嵌入到当前页面中。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;object&gt;</a></td>
+                    <td><br>
+                        <b>HTML
+                            <pre>&lt;object&gt;</pre> 元素
+                        </b> （或者称作 <em>HTML 嵌入对象元素</em>）表示引入一个外部资源，这个资源可能是一张图片，一个
+                        嵌入的浏览上下文，亦或是一个插件所使用的资源。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;picture&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;picture&gt;</pre> 元素
+                        </b> 通过包含零或多个
+                        <pre>source</pre> 元素和一个
+                        <pre>&lt;img&gt;</pre> 元素来为不同的显示/设
+                        备场景提供图像版本。浏览器会选择最匹配的子
+                        <pre>&lt;source&gt;</pre> 元素，如果没有匹配的，就选择
+                        <pre>&lt;img&gt;</pre> 元素的
+                        <pre>src</pre> 属性中的 URL。然后，所选图像呈现在
+                        <pre>&lt;img&gt;</pre>元素占据的空间中。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a class="only-in-en-us" title="Currently only available in English (US)" href="#">
+                            <pre>&lt;portal&gt;</pre> <small>(en-US)</small>
+                        </a></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;source&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;source&gt;</pre>元素
+                        </b> 为
+                        <pre>picture</pre>,
+                        <pre>audio</pre> 或者
+                        <pre>video</pre> 元素指定多个媒体
+                        资源。这是一个空元素。它通常用于以<a href="#" class="only-in-en-us"
+                            title="Currently only available in English (US)">不同浏览器支持的
+                            多种格式 (en-US)</a>提供相同的媒体内容。
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="i" class="classification">
+            <h4>SVG 和 MathML</h4>
+            <p>你可以使用 <code>&lt;svg&gt;</code> 或 <code>&lt;svg&gt;</code> 将 SVG 或 MathML 内容直接嵌入 HTML 文档。</p>
+            <table>
+                <tr>
+                    <th>元素</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;svg&gt;</a></td>
+                    <td>
+                        <pre>svg</pre> 元素是一个容器，它定义了一个新的坐标系和<a href="#">视口</a>。它用作 SVG 文档的最外层元素，也可以用于在 SVG 或 HTML 文档中嵌入
+                        SVG 片段。
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;math&gt;</a></td>
+                    <td>MathML 中的顶级元素是
+                        <pre>&lt;math&gt;</pre>。每一个有效的 MathML 实例必须包含在
+                        <pre>&lt;math&gt;</pre> 标记中。此外，不
+                        可以在一个
+                        <pre>&lt;math&gt;</pre> 元素中嵌套另一个，但是你可以在其中包含任意数量的其他子元素。
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="j" class="classification">
+            <h4>脚本</h4>
+            <p>为了创建动态内容和 Web 应用程序，HTML 支持使用脚本语言，最突出的就是 JavaScript。某些元素用于支持此功能。</p>
+            <table>
+                <tr>
+
+                    <th>元素</th>
+                    <th>描述</th>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;canvas&gt;</a></td>
+                    <td><b>
+                            <pre>&lt;canvas&gt;</pre>元素
+                        </b> 可被用来通过 JavaScript（<a href="#">Canvas</a>&nbsp;API 或 <a href="#">WebGL</a>&nbsp;API）绘制
+                        图形及图形动画。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;noscript&gt;</a></td>
+                    <td>如果页面上的脚本类型不受支持或者当前在浏览器中关闭了脚本，则在 <b>HTML
+                            <pre>&lt;noscript&gt;</pre> 元素
+                        </b> 中定义脚本未被执行时的替代内
+                        容。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;script&gt;</a></td>
+                    <td>该元素包含<a href="#">全局属性</a>。</td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="k" class="classification">
+            <h4>编辑标识</h4>
+            <p>这些元素能标示出某个文本被更改过的部分。</p>
+            <table>
+                <tr>
+                    <th>元素</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td><b><a href="#">&lt;del&gt;</a></td>
+                    <td><b>HTML 的
+                            <pre>&lt;del&gt;</pre> 标签
+                        </b> 表示一些被从文档中删除的文字内容。比如可以在需要显示修改记录或者源代码差异的情况使用
+                        这个标签。
+                        <pre>ins</pre>标签的作用恰恰于此相反：表示文档中添加的内容。
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;ins&gt;</a></td>
+                    <td><br>
+                        <b>HTML
+                            <pre>&lt;ins&gt;</pre> 元素
+                        </b> 定义已经被插入文档中的文本。
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="l" class="classification">
+            <h4>表格内容</h4>
+            <p>这里的元素用于创建和处理表格数据。</p>
+            <table>
+                <tr>
+
+                    <th>元素</th>
+                    <th>描述</th>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;caption&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;caption&gt;</pre>&nbsp;元素
+                        </b> &nbsp;(or <em>HTML 表格标题元素</em>) 展示一个表格的标题， 它常常作为&nbsp;
+                        <pre>table</pre> 的第一个子元素出现，同时显示在表格内容的最前面，但是，它同样可以被 CSS 样式化，所以，它同样可以出现在任何一个一个相对
+                        于表格的做任意位置。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;col&gt;</a></td>
+                    <td><b>HTML&nbsp;
+                            <pre>&lt;col&gt;</pre>&nbsp;元素
+                        </b> &nbsp;定义表格中的列，并用于定义所有公共单元格上的公共语义。它通常位于
+                        <pre>colgroup</pre>元素内。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;colgroup&gt;</a></td>
+                    <td><b>HTML 中的 表格列组</b>（
+                        <pre>&lt;colgroup&gt;</pre>）标签用来定义表中的一组列表。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;table&gt;</a></td>
+                    <td><b>HTML 的
+                            <pre>&lt;table&gt;</pre> 元素
+                        </b> 表示表格数据 — 即通过二维数据表表示的信息。</td>
+                </tr>
+                <tr>
+                    <td><a href="#">
+                            <pre>&lt;tbody&gt;</pre> <small>(en-US)</small>
+                        </a></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;td&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;td&gt;</pre> 元素
+                        </b> 定义了一个包含数据的表格单元格。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;tfoot&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;tfoot&gt;</pre> 元素
+                        </b>定义了一组表格中各列的汇总行。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;th&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;th&gt;</pre> 元素
+                        </b> 定义表格内的表头单元格。这部分特征是由&nbsp;
+                        <pre>scope</pre> and
+                        <pre>headers</pre> 属
+                        性准确定义的。
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;thead&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;thead&gt;</pre> 元素
+                        </b> 定义了一组定义表格的列头的行。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;tr&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;tr&gt;</pre>&nbsp;元素
+                        </b> 定义表格中的行。&nbsp;同一行可同时出现
+                        <pre>&lt;td&gt;</pre>和
+                        <pre>&lt;th&gt;</pre>&nbsp;元素
+                        。
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="m" class="classification">
+            <h4>表单</h4>
+            <p>HTML 提供了许多可一起使用的元素，这些元素能用来创建一个用户可以填写并提交到网站或应用程序的表单。</p>
+            <table>
+                <tr>
+
+                    <th>元素</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;button&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;button&gt;</pre> 元素
+                        </b> 表示一个可点击的按钮，可以用在<a href="#">表单</a>或文档其它需要使用简单标准按钮的
+                        地方。&nbsp;默认情况下，HTML 按钮的显示样式接近于 user agent 所在的宿主系统平台（用户操作系统）的按钮， 但你可以使用&nbsp;<a
+                            href="#">CSS</a>&nbsp;来改变按钮的样貌。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;datalist&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;datalist&gt;</pre>元素
+                        </b> 包含了一组
+                        <pre>&lt;option&gt;</pre>元素，这些元素表示其它表单控件可选值
+                        。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;fieldset&gt;</a></td>
+                    <td>&nbsp;这个元素包含<a href="#">所有全局属性</a>。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;form&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;form&gt;</pre> 元素
+                        </b> 表示文档中的一个区域，此区域包含交互控件，用于向 Web 服务器提交信息。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;input&gt;</a></td>
+                    <td><b>HTML&nbsp;
+                            <pre>&lt;input&gt;</pre>&nbsp;元素
+                        </b> 用于为基于 Web 的表单创建交互式控件，以便接受来自用户的数据; 可以使用各种
+                        类型的输入数据和控件小部件，具体取决于设备和user agent。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;label&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;label&gt;</pre> 元素
+                        </b> 表示用户界面中某个元素的说明。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;legend&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;legend&gt;</pre>
+                            元素
+                        </b>用于表示其父元素
+                        <pre>&lt;fieldset&gt;</pre> 的内容标题。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;meter&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;meter&gt;</pre>元素
+                        </b>用来显示已知范围的标量值或者分数值。 &nbsp;</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;optgroup&gt;</a></td>
+                    <td><b>HTML 元素&nbsp;
+                            <pre>&lt;optgroup&gt;</pre>&nbsp;
+                        </b> 为
+                        <pre>&lt;select&gt;</pre> 元素中的选项创建分组。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;option&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;option&gt;</pre> 元素<em>&nbsp;</em>
+                        </b> 用于定义在
+                        <pre>&lt;select&gt;</pre>,
+                        <pre>&lt;optgroup&gt;</pre> 或
+                        <pre>&lt;datalist&gt;</pre> 元素中包含的项。
+                        <pre>&lt;option&gt;</pre> 可以在弹出窗口和 HTML&nbsp;文档中的其他项目列表中表示菜单项。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;output&gt;</a></td>
+                    <td><b>HTML&nbsp;
+                            <pre>&lt;output&gt;</pre>&nbsp;标签
+                        </b> 表示计算或用户操作的结果。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;progress&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;progress&gt;</pre>元素
+                        </b> 用来显示一项任务的完成进度。虽然规范中没有规定该元素具体如何显示，浏览
+                        器开发商可以自己决定，但通常情况下，该元素都显示为一个进度条形式。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;select&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;select&gt;</pre>元素
+                        </b> 表示一个提供选项菜单的控件：</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;textarea&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;textarea&gt;</pre> 元素
+                        </b> 表示一个多行纯文本编辑控件，当你希望用户输入一段相当长的、不限格式的文本，例如评
+                        论或反馈表单中的一段意见时，这很有用。</td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="n" class="classification">
+            <h4>交互元素</h4>
+            <p>HTML 提供了一系列有助于创建交互式用户界面对象的元素。</p>
+            <table>
+                <tr>
+
+                    <th>元素</th>
+                    <th>描述</th>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;details&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;details&gt;</pre> 元素
+                        </b> 可创建一个挂件，仅在被切换成展开状态时，它才会显示内含的信息。
+                        <pre>&lt;summary&gt;</pre> 元素可为该部件提供概要或者标签。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;dialog&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;dialog&gt;</pre> 元素
+                        </b> 表示一个对话框或其他交互式组件，例如一个检查器或者窗口。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;summary&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;summary&gt;</pre> 元素
+                        </b> 用作 一个
+                        <pre>&lt;details&gt;</pre>元素的一个内容的摘要，标题或图例。
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="o" class="classification">
+            <h4>Web 组件</h4>
+            <p>Web 组件是一种与 HTML 相关联（HTML-related）的技术，简单来说，它允许开发者创建自定义元素，并如同普通的 HTML 一样使用它们。另外，也可以创建经过自定义的标准 HTML 元素。</p>
+            <table>
+                <tr>
+
+                    <th>元素</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td><a href="#">&lt;slot&gt;</a></td>
+                    <td><b>HTML
+                            <pre> &lt;slot&gt; </pre> 元素 ，
+                        </b> 作为&nbsp;<a href="#">Web Components</a> 技术套件的一部分，是 Web 组件内的一个占
+                        位符。该占位符可以在后期使用自己的标记语言填充，这样您就可以创建单独的 DOM 树，并将它与其它的组件组合在一起。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;template&gt;</a></td>
+                    <td><b>HTML 内容模板（
+                            <pre>&lt;template&gt;</pre>）元素
+                        </b> 是一种用于保存客户端内容机制，该内容在加载页面时不会呈现，但随后可以 (原文为 may be) 在运行时使用 JavaScript 实例化。</td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="p" class="classification">
+            <h4>过时的和弃用的元素</h4>
+            <p>警告： 下面这些旧的 HTML 元素已被弃用，且不应再被使用。 千万不要在新的项目中使用它们，并且要尽快替换旧项目中的残余。 在此列出，仅供参考。</p>
+            <table>
+                <tr>
+                    <th>元素</th>
+                    <th>描述</th>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;acronym&gt;</a></td>
+                    <td>HTML Acronym&nbsp; 元素 (
+                        <pre>&lt;acronym&gt;)</pre> 允许作者明确地声明一个字符序列，，它们构成一个单词的首字母缩写或简略语。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;applet&gt;</a></td>
+                    <td>HTML 中的 Applet 元素 (
+                        <pre>&lt;applet&gt;</pre>) 标志着包含了 Java 的 applet。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;bgsound&gt;</a></td>
+                    <td>&lt;bgsound&gt;是 IE 浏览器中设置网页背景音乐的元素。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;big&gt;</a></td>
+                    <td>The HTML Big Element (
+                        <pre>&lt;big&gt;</pre>) 会使字体加大一号（例如从小号 (small) 到中号 (medium)，从大号 (large) 到加大
+                        (x-large)），最大不超过浏览器的最大字体。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;blink&gt;</a></td>
+                    <td>HTML Blink Element (
+                        <pre>&lt;blink&gt;</pre>) 不是标准元素，它会使包含其中的文本闪烁。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;center&gt;</a></td>
+                    <td>HTML Center 元素 (
+                        <pre>&lt;center&gt;</pre>) 是个 <a href="#" title="HTML/Block-level_elements">块级元素</a>，可以包含段落，以
+                        及其它块级和内联元素。这个元素的整个内容在它的上级元素中水平居中 (通常是
+                        <pre>body</pre>)。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;content&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;content&gt;</pre>元素
+                        </b> —<a href="#">Web 组件</a>的技术套件的废弃部分 — 用于<a href="#">Shadow
+                            DOM</a>内部作为insertion point，并且不可用于任何正常的 HTML，现在已被
+                        <pre>slot</pre> 元素代替，它在 DOM 中创
+                        建一个位置，Shadow DOM 会插入这里。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;dir&gt;</a></td>
+                    <td>已废弃的 <b>HTML 目录元素</b> （<b>
+                            <pre>&lt;dir&gt;</pre>
+                        </b> ）被作为一个文件和/或文件夹的目录的容器，可能还有 user agent 应
+                        用的样式与图标。 </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;font&gt;</a></td>
+                    <td><em>HTML Font 元素</em>（
+                        <pre>&lt;font&gt;</pre>）定义了该内容的字体大小、顏色与表现。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;frame&gt;</a></td>
+                    <td>
+                        <pre>&lt;frame&gt;</pre>&nbsp;是 HTML 元素，它定义了一个特定区域，另一个 HTML 文档可以在里面展示。帧应该在
+                        <pre>frameset</pre> 中使用。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;frameset&gt;</a></td>
+                    <td>
+                        <pre>&lt;frameset&gt;</pre> 是一个用于包含
+                        <pre>frame</pre> 的 HTML 元素。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;hgroup&gt;</a></td>
+                    <td>这个元素仅包含全局属性。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;image&gt;</a></td>
+                    <td>HTML
+                        <pre>&lt;image&gt;</pre>元素曾经是一个试验性的元素，用来显示图片。它从未被实现过，请使用标准的
+                        <pre>img</pre>元素。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;keygen&gt;</a></td>
+                    <td>HTML&nbsp;
+                        <pre>&lt;keygen&gt;</pre>&nbsp;元素是为了方便生成密钥材料和提交作为 <a href="#">HTML form</a>&nbsp;的一部分的公钥。
+                        这种机制被用于设计基于 Web 的证书管理系统。按照预想，
+                        <pre>&lt;keygen&gt;</pre>&nbsp;元素将用于&nbsp;HTML&nbsp;表单与其他的所需信息一
+                        起构造一个证书请求，该处理的结果将是一个带有签名的证书。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;marquee&gt;</a></td>
+                    <td>HTML marquee 元素（
+                        <pre>&lt;marquee&gt;）</pre> 用来插入一段滚动的文字。你可以使用它的属性控制当文本到达容器边缘发生的事情。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;menuitem&gt;</a></td>
+                    <td>用户可以通过<b>HTML
+                            <pre>&lt;menuitem&gt;</pre> 元素
+                        </b> 生成一个弹出式菜单。这包括上下文菜单，以及按钮可能附带的菜单。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;nobr&gt;</a></td>
+                    <td>&nbsp;HTML
+                        <pre>&lt;nobr&gt;</pre>&nbsp;元素阻止文本自动拆分成新行，所以它展示为长的一行，可能还需要滚动。这个标签不是标准的 HTML，并且不应该使用。反之应该使用 CSS
+                        属性&nbsp;
+                        <pre>white-space</pre>，像这样：
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;noembed&gt;</a></td>
+                    <td>
+                        <pre><b>&lt;noembed&gt;</b> </pre>&nbsp;元素是个废除的和不标准的方式，用于向不支持
+                        <pre>embed</pre> ，或者不支持作者希望的&nbsp;<a href="#">嵌入式内容</a>&nbsp;的浏览器提供替代（或者 “后备”）内容。这个元素在 HTML 4.01
+                        起废除，以支持&nbsp;
+                        <pre>object</pre>。后
+                        备内容应该插在&nbsp;
+                        <pre>object</pre> 的开始和结束标签之间。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;noframes&gt;</a></td>
+                    <td>
+                        <pre>&lt;noframes&gt;</pre>&nbsp;是个 HTML 元素，用于支持不支持 &nbsp;
+                        <pre>frame</pre> 元素的浏览器，或者这样配置的浏览器。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;param&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;param&gt;元素</pre>
+                        </b> 为
+                        <pre>object</pre>元素定义参数
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;plaintext&gt;</a></td>
+                    <td><em>HTML 纯文本元素</em>&nbsp;(
+                        <pre>&lt;plaintext&gt;</pre>) 将起始标签后面的任何东西渲染为纯文本，不会解释为 HTML。它没有闭合
+                        标签，因为任何后面的东西都会看做纯文本。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;rb&gt;</a></td>
+                    <td><b>HTML Ruby Base</b> （
+                        <pre>&lt;rb&gt;</pre>）元素用于分隔
+                        <pre>ruby</pre>注释的基本文本组件（即正在注释的文本）。一个
+                        <pre>&lt;rb&gt;</pre>元素应该包装基本文本的每个单独的原子段。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;rtc&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;rtc&gt;</pre>&nbsp;元素
+                        </b> 包含文字的语义注解，它们在
+                        <pre>rb</pre> 元素中展示。
+                        <pre>rb</pre> 元素可以拥有发
+                        音&nbsp;(
+                        <pre>rt</pre>) 和语义 (
+                        <pre>rtc</pre>) 注解。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;shadow&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;shadow&gt;</pre>&nbsp;元素&nbsp;
+                        </b> — <a href="#">Web 组件</a>技术套件的废弃部分 — 目的是用作 Shadow DOM insertion point。如果你在 shadow host
+                        下面创建了多个 shadow root，你就可能已经使用了它。在正常的 HTML 没有任何用处。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;spacer&gt;</a></td>
+                    <td><b>
+                            <pre>&lt;spacer&gt;</pre>
+                        </b> 是过时的 HTML 元素，它可以向页面插入间隔。它由 Netscape 设计，用于实现单像素布局图像的相同效
+                        果，Web 设计师用它来向页面添加空白，而不需要实际使用图片。 但是，
+                        <pre>&lt;spacer&gt;</pre> 不再受任何主流浏览器支持，并且相同效果可以
+                        简单由 CSS 实现。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;strike&gt;</a></td>
+                    <td><b>HTML
+                            <pre>&lt;strike&gt;</pre>&nbsp;元素
+                        </b> （或者 HTML 删除线元素）在文本上放置删除线。</td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;tt&gt;</a></td>
+                    <td>HTML 电报文本元素 (
+                        <pre>&lt;tt&gt;</pre>) 产生一个内联元素，使用浏览器内置的 monotype 字体展示。这个元素用于给文本排版，使其等
+                        宽展示，就像电报那样。使用&nbsp;
+                        <pre>pre</pre> 元素来展示等宽文本可能更加普遍。
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><a href="#">&lt;xmp&gt;</a></td>
+                    <td>
+                        <pre>&lt;xmp&gt;</pre> 标签之间的内容不会被当作文档内容解析，而会被用等宽字体直接呈现。HTML2 规范建议，本标签中的内容应该具有
+                        足够容纳每行 80 个字母的宽度。
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </main>
+    <footer id="footer">
+        <a href="../../index.html" target="_blank">首页</a>
+    </footer>
+</body>
+
+</html>
